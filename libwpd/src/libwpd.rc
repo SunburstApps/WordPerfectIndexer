@@ -1,0 +1,31 @@
+#include <Windows.h>
+
+VS_VERSION_INFO VERSIONINFO
+  FILEVERSION 0,10,1,0
+  PRODUCTVERSION 0,10,1,0
+  FILEFLAGSMASK 0
+  FILEFLAGS 0
+  FILEOS VOS__WINDOWS32
+  FILETYPE VFT_DLL
+  FILESUBTYPE VFT2_UNKNOWN
+  BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+      BLOCK "040904B0"
+      BEGIN
+	VALUE "CompanyName", "William Kent"
+	VALUE "FileDescription", "libwpd"
+	VALUE "FileVersion", "0.10.1.0"
+	VALUE "InternalName", "libwpd\0"
+	VALUE "LegalCopyright", "Copyright (C) 2002-2006 William Lachance, Marc Maurer, Fridrich Strba, other contributers"
+	VALUE "OriginalFilename", "libwpd.dll"
+	VALUE "ProductName", "libwpd"
+	VALUE "ProductVersion", "0.10.1"
+      END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+      VALUE "Translation", 0x409, 1200
+    END
+  END
+

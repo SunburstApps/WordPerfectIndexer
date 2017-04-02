@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{790C0656-C22F-485F-8910-689B0D865D34}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libwpd</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>DLL_EXPORT;LIBWPD_BUILD;WIN32;_DEBUG;_WINDOWS;_USRDLL;LIBWPD_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc;$(SolutionDir)librevenge\inc</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>DLL_EXPORT;LIBWPD_BUILD;_DEBUG;_WINDOWS;_USRDLL;LIBWPD_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc;$(SolutionDir)librevenge\inc</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>DLL_EXPORT;LIBWPD_BUILD;WIN32;NDEBUG;_WINDOWS;_USRDLL;LIBWPD_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc;$(SolutionDir)librevenge\inc</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>DLL_EXPORT;LIBWPD_BUILD;NDEBUG;_WINDOWS;_USRDLL;LIBWPD_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc;$(SolutionDir)librevenge\inc</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\libwpd\libwpd.h" />
+    <ClInclude Include="inc\libwpd\WPDocument.h" />
+    <ClInclude Include="src\libwpd_internal.h" />
+    <ClInclude Include="src\libwpd_math.h" />
+    <ClInclude Include="src\WP1BottomMarginGroup.h" />
+    <ClInclude Include="src\WP1CenterTextGroup.h" />
+    <ClInclude Include="src\WP1ContentListener.h" />
+    <ClInclude Include="src\WP1ExtendedCharacterGroup.h" />
+    <ClInclude Include="src\WP1FileStructure.h" />
+    <ClInclude Include="src\WP1FixedLengthGroup.h" />
+    <ClInclude Include="src\WP1FlushRightGroup.h" />
+    <ClInclude Include="src\WP1FontIdGroup.h" />
+    <ClInclude Include="src\WP1FootnoteEndnoteGroup.h" />
+    <ClInclude Include="src\WP1HeaderFooterGroup.h" />
+    <ClInclude Include="src\WP1Heuristics.h" />
+    <ClInclude Include="src\WP1JustificationGroup.h" />
+    <ClInclude Include="src\WP1LeftIndentGroup.h" />
+    <ClInclude Include="src\WP1LeftRightIndentGroup.h" />
+    <ClInclude Include="src\WP1Listener.h" />
+    <ClInclude Include="src\WP1MarginReleaseGroup.h" />
+    <ClInclude Include="src\WP1MarginResetGroup.h" />
+    <ClInclude Include="src\WP1Parser.h" />
+    <ClInclude Include="src\WP1Part.h" />
+    <ClInclude Include="src\WP1PictureGroup.h" />
+    <ClInclude Include="src\WP1PointSizeGroup.h" />
+    <ClInclude Include="src\WP1SetTabsGroup.h" />
+    <ClInclude Include="src\WP1SpacingResetGroup.h" />
+    <ClInclude Include="src\WP1StylesListener.h" />
+    <ClInclude Include="src\WP1SubDocument.h" />
+    <ClInclude Include="src\WP1SuppressPageCharacteristicsGroup.h" />
+    <ClInclude Include="src\WP1TopMarginGroup.h" />
+    <ClInclude Include="src\WP1UnsupportedFixedLengthGroup.h" />
+    <ClInclude Include="src\WP1UnsupportedVariableLengthGroup.h" />
+    <ClInclude Include="src\WP1VariableLengthGroup.h" />
+    <ClInclude Include="src\WP3AttributeGroup.h" />
+    <ClInclude Include="src\WP3ContentListener.h" />
+    <ClInclude Include="src\WP3DefinitionGroup.h" />
+    <ClInclude Include="src\WP3DisplayGroup.h" />
+    <ClInclude Include="src\WP3DoubleByteScriptCharacterGroup.h" />
+    <ClInclude Include="src\WP3EndOfLinePageGroup.h" />
+    <ClInclude Include="src\WP3ExtendedCharacterGroup.h" />
+    <ClInclude Include="src\WP3FileStructure.h" />
+    <ClInclude Include="src\WP3FixedLengthGroup.h" />
+    <ClInclude Include="src\WP3FontGroup.h" />
+    <ClInclude Include="src\WP3FootnoteEndnoteGroup.h" />
+    <ClInclude Include="src\WP3Header.h" />
+    <ClInclude Include="src\WP3HeaderFooterGroup.h" />
+    <ClInclude Include="src\WP3IndentGroup.h" />
+    <ClInclude Include="src\WP3Listener.h" />
+    <ClInclude Include="src\WP3MiscellaneousGroup.h" />
+    <ClInclude Include="src\WP3PageFormatGroup.h" />
+    <ClInclude Include="src\WP3Parser.h" />
+    <ClInclude Include="src\WP3Part.h" />
+    <ClInclude Include="src\WP3Resource.h" />
+    <ClInclude Include="src\WP3ResourceFork.h" />
+    <ClInclude Include="src\WP3SingleByteFunction.h" />
+    <ClInclude Include="src\WP3StylesListener.h" />
+    <ClInclude Include="src\WP3SubDocument.h" />
+    <ClInclude Include="src\WP3TabGroup.h" />
+    <ClInclude Include="src\WP3TablesGroup.h" />
+    <ClInclude Include="src\WP3UndoGroup.h" />
+    <ClInclude Include="src\WP3UnsupportedFixedLengthGroup.h" />
+    <ClInclude Include="src\WP3UnsupportedVariableLengthGroup.h" />
+    <ClInclude Include="src\WP3VariableLengthGroup.h" />
+    <ClInclude Include="src\WP3WindowGroup.h" />
+    <ClInclude Include="src\WP42ContentListener.h" />
+    <ClInclude Include="src\WP42DefineColumnsGroup.h" />
+    <ClInclude Include="src\WP42ExtendedCharacterGroup.h" />
+    <ClInclude Include="src\WP42FileStructure.h" />
+    <ClInclude Include="src\WP42HeaderFooterGroup.h" />
+    <ClInclude Include="src\WP42Heuristics.h" />
+    <ClInclude Include="src\WP42Listener.h" />
+    <ClInclude Include="src\WP42MarginResetGroup.h" />
+    <ClInclude Include="src\WP42MultiByteFunctionGroup.h" />
+    <ClInclude Include="src\WP42Parser.h" />
+    <ClInclude Include="src\WP42Part.h" />
+    <ClInclude Include="src\WP42StylesListener.h" />
+    <ClInclude Include="src\WP42SubDocument.h" />
+    <ClInclude Include="src\WP42SuppressPageCharacteristicsGroup.h" />
+    <ClInclude Include="src\WP42UnsupportedMultiByteFunctionGroup.h" />
+    <ClInclude Include="src\WP5AttributeGroup.h" />
+    <ClInclude Include="src\WP5BoxGroup.h" />
+    <ClInclude Include="src\WP5ContentListener.h" />
+    <ClInclude Include="src\WP5DefinitionGroup.h" />
+    <ClInclude Include="src\WP5ExtendedCharacterGroup.h" />
+    <ClInclude Include="src\WP5FileStructure.h" />
+    <ClInclude Include="src\WP5FixedLengthGroup.h" />
+    <ClInclude Include="src\WP5FontGroup.h" />
+    <ClInclude Include="src\WP5FontNameStringPoolPacket.h" />
+    <ClInclude Include="src\WP5FootnoteEndnoteGroup.h" />
+    <ClInclude Include="src\WP5GeneralPacketData.h" />
+    <ClInclude Include="src\WP5GeneralPacketIndex.h" />
+    <ClInclude Include="src\WP5GraphicsInformationPacket.h" />
+    <ClInclude Include="src\WP5Header.h" />
+    <ClInclude Include="src\WP5HeaderFooterGroup.h" />
+    <ClInclude Include="src\WP5IndentGroup.h" />
+    <ClInclude Include="src\WP5Listener.h" />
+    <ClInclude Include="src\WP5ListFontsUsedPacket.h" />
+    <ClInclude Include="src\WP5PageFormatGroup.h" />
+    <ClInclude Include="src\WP5Parser.h" />
+    <ClInclude Include="src\WP5Part.h" />
+    <ClInclude Include="src\WP5PrefixData.h" />
+    <ClInclude Include="src\WP5SingleByteFunction.h" />
+    <ClInclude Include="src\WP5SpecialHeaderIndex.h" />
+    <ClInclude Include="src\WP5StylesListener.h" />
+    <ClInclude Include="src\WP5SubDocument.h" />
+    <ClInclude Include="src\WP5TabGroup.h" />
+    <ClInclude Include="src\WP5TableEOLGroup.h" />
+    <ClInclude Include="src\WP5TableEOPGroup.h" />
+    <ClInclude Include="src\WP5UnsupportedFixedLengthGroup.h" />
+    <ClInclude Include="src\WP5UnsupportedVariableLengthGroup.h" />
+    <ClInclude Include="src\WP5VariableLengthGroup.h" />
+    <ClInclude Include="src\WP60Header.h" />
+    <ClInclude Include="src\WP61Header.h" />
+    <ClInclude Include="src\WP6AttributeGroup.h" />
+    <ClInclude Include="src\WP6BoxGroup.h" />
+    <ClInclude Include="src\WP6CharacterGroup.h" />
+    <ClInclude Include="src\WP6ColumnGroup.h" />
+    <ClInclude Include="src\WP6CommentAnnotationPacket.h" />
+    <ClInclude Include="src\WP6ContentListener.h" />
+    <ClInclude Include="src\WP6DefaultInitialFontPacket.h" />
+    <ClInclude Include="src\WP6DisplayNumberReferenceGroup.h" />
+    <ClInclude Include="src\WP6EOLGroup.h" />
+    <ClInclude Include="src\WP6ExtendedCharacterGroup.h" />
+    <ClInclude Include="src\WP6ExtendedDocumentSummaryPacket.h" />
+    <ClInclude Include="src\WP6FileStructure.h" />
+    <ClInclude Include="src\WP6FillStylePacket.h" />
+    <ClInclude Include="src\WP6FixedLengthGroup.h" />
+    <ClInclude Include="src\WP6FontDescriptorPacket.h" />
+    <ClInclude Include="src\WP6FootnoteEndnoteGroup.h" />
+    <ClInclude Include="src\WP6GeneralTextPacket.h" />
+    <ClInclude Include="src\WP6GraphicsBoxStylePacket.h" />
+    <ClInclude Include="src\WP6GraphicsCachedFileDataPacket.h" />
+    <ClInclude Include="src\WP6GraphicsFilenamePacket.h" />
+    <ClInclude Include="src\WP6Header.h" />
+    <ClInclude Include="src\WP6HeaderFooterGroup.h" />
+    <ClInclude Include="src\WP6HighlightGroup.h" />
+    <ClInclude Include="src\WP6HyperlinkPacket.h" />
+    <ClInclude Include="src\WP6Listener.h" />
+    <ClInclude Include="src\WP6NumberingMethodGroup.h" />
+    <ClInclude Include="src\WP6OutlineStylePacket.h" />
+    <ClInclude Include="src\WP6PageGroup.h" />
+    <ClInclude Include="src\WP6ParagraphGroup.h" />
+    <ClInclude Include="src\WP6Parser.h" />
+    <ClInclude Include="src\WP6Part.h" />
+    <ClInclude Include="src\WP6PrefixData.h" />
+    <ClInclude Include="src\WP6PrefixDataPacket.h" />
+    <ClInclude Include="src\WP6PrefixIndice.h" />
+    <ClInclude Include="src\WP6SetNumberGroup.h" />
+    <ClInclude Include="src\WP6SingleByteFunction.h" />
+    <ClInclude Include="src\WP6StyleGroup.h" />
+    <ClInclude Include="src\WP6StylesListener.h" />
+    <ClInclude Include="src\WP6SubDocument.h" />
+    <ClInclude Include="src\WP6TabGroup.h" />
+    <ClInclude Include="src\WP6TableStylePacket.h" />
+    <ClInclude Include="src\WP6TibetanMap.h" />
+    <ClInclude Include="src\WP6UndoGroup.h" />
+    <ClInclude Include="src\WP6UnsupportedFixedLengthGroup.h" />
+    <ClInclude Include="src\WP6UnsupportedVariableLengthGroup.h" />
+    <ClInclude Include="src\WP6VariableLengthGroup.h" />
+    <ClInclude Include="src\WPXContentListener.h" />
+    <ClInclude Include="src\WPXEncryption.h" />
+    <ClInclude Include="src\WPXFileStructure.h" />
+    <ClInclude Include="src\WPXHeader.h" />
+    <ClInclude Include="src\WPXListener.h" />
+    <ClInclude Include="src\WPXMemoryStream.h" />
+    <ClInclude Include="src\WPXPageSpan.h" />
+    <ClInclude Include="src\WPXParser.h" />
+    <ClInclude Include="src\WPXStylesListener.h" />
+    <ClInclude Include="src\WPXSubDocument.h" />
+    <ClInclude Include="src\WPXTable.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\libwpd.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\libwpd_internal.cpp" />
+    <ClCompile Include="src\libwpd_math.cpp" />
+    <ClCompile Include="src\WP1BottomMarginGroup.cpp" />
+    <ClCompile Include="src\WP1CenterTextGroup.cpp" />
+    <ClCompile Include="src\WP1ContentListener.cpp" />
+    <ClCompile Include="src\WP1ExtendedCharacterGroup.cpp" />
+    <ClCompile Include="src\WP1FileStructure.cpp" />
+    <ClCompile Include="src\WP1FixedLengthGroup.cpp" />
+    <ClCompile Include="src\WP1FlushRightGroup.cpp" />
+    <ClCompile Include="src\WP1FontIdGroup.cpp" />
+    <ClCompile Include="src\WP1FootnoteEndnoteGroup.cpp" />
+    <ClCompile Include="src\WP1HeaderFooterGroup.cpp" />
+    <ClCompile Include="src\WP1Heuristics.cpp" />
+    <ClCompile Include="src\WP1JustificationGroup.cpp" />
+    <ClCompile Include="src\WP1LeftIndentGroup.cpp" />
+    <ClCompile Include="src\WP1LeftRightIndentGroup.cpp" />
+    <ClCompile Include="src\WP1Listener.cpp" />
+    <ClCompile Include="src\WP1MarginReleaseGroup.cpp" />
+    <ClCompile Include="src\WP1MarginResetGroup.cpp" />
+    <ClCompile Include="src\WP1Parser.cpp" />
+    <ClCompile Include="src\WP1Part.cpp" />
+    <ClCompile Include="src\WP1PictureGroup.cpp" />
+    <ClCompile Include="src\WP1PointSizeGroup.cpp" />
+    <ClCompile Include="src\WP1SetTabsGroup.cpp" />
+    <ClCompile Include="src\WP1SpacingResetGroup.cpp" />
+    <ClCompile Include="src\WP1StylesListener.cpp" />
+    <ClCompile Include="src\WP1SubDocument.cpp" />
+    <ClCompile Include="src\WP1SuppressPageCharacteristicsGroup.cpp" />
+    <ClCompile Include="src\WP1TopMarginGroup.cpp" />
+    <ClCompile Include="src\WP1UnsupportedFixedLengthGroup.cpp" />
+    <ClCompile Include="src\WP1UnsupportedVariableLengthGroup.cpp" />
+    <ClCompile Include="src\WP1VariableLengthGroup.cpp" />
+    <ClCompile Include="src\WP3AttributeGroup.cpp" />
+    <ClCompile Include="src\WP3ContentListener.cpp" />
+    <ClCompile Include="src\WP3DefinitionGroup.cpp" />
+    <ClCompile Include="src\WP3DisplayGroup.cpp" />
+    <ClCompile Include="src\WP3DoubleByteScriptCharacterGroup.cpp" />
+    <ClCompile Include="src\WP3EndOfLinePageGroup.cpp" />
+    <ClCompile Include="src\WP3ExtendedCharacterGroup.cpp" />
+    <ClCompile Include="src\WP3FileStructure.cpp" />
+    <ClCompile Include="src\WP3FixedLengthGroup.cpp" />
+    <ClCompile Include="src\WP3FontGroup.cpp" />
+    <ClCompile Include="src\WP3FootnoteEndnoteGroup.cpp" />
+    <ClCompile Include="src\WP3Header.cpp" />
+    <ClCompile Include="src\WP3HeaderFooterGroup.cpp" />
+    <ClCompile Include="src\WP3IndentGroup.cpp" />
+    <ClCompile Include="src\WP3Listener.cpp" />
+    <ClCompile Include="src\WP3MiscellaneousGroup.cpp" />
+    <ClCompile Include="src\WP3PageFormatGroup.cpp" />
+    <ClCompile Include="src\WP3Parser.cpp" />
+    <ClCompile Include="src\WP3Part.cpp" />
+    <ClCompile Include="src\WP3Resource.cpp" />
+    <ClCompile Include="src\WP3ResourceFork.cpp" />
+    <ClCompile Include="src\WP3SingleByteFunction.cpp" />
+    <ClCompile Include="src\WP3StylesListener.cpp" />
+    <ClCompile Include="src\WP3SubDocument.cpp" />
+    <ClCompile Include="src\WP3TabGroup.cpp" />
+    <ClCompile Include="src\WP3TablesGroup.cpp" />
+    <ClCompile Include="src\WP3UndoGroup.cpp" />
+    <ClCompile Include="src\WP3UnsupportedFixedLengthGroup.cpp" />
+    <ClCompile Include="src\WP3UnsupportedVariableLengthGroup.cpp" />
+    <ClCompile Include="src\WP3VariableLengthGroup.cpp" />
+    <ClCompile Include="src\WP3WindowGroup.cpp" />
+    <ClCompile Include="src\WP42ContentListener.cpp" />
+    <ClCompile Include="src\WP42DefineColumnsGroup.cpp" />
+    <ClCompile Include="src\WP42ExtendedCharacterGroup.cpp" />
+    <ClCompile Include="src\WP42FileStructure.cpp" />
+    <ClCompile Include="src\WP42HeaderFooterGroup.cpp" />
+    <ClCompile Include="src\WP42Heuristics.cpp" />
+    <ClCompile Include="src\WP42Listener.cpp" />
+    <ClCompile Include="src\WP42MarginResetGroup.cpp" />
+    <ClCompile Include="src\WP42MultiByteFunctionGroup.cpp" />
+    <ClCompile Include="src\WP42Parser.cpp" />
+    <ClCompile Include="src\WP42Part.cpp" />
+    <ClCompile Include="src\WP42StylesListener.cpp" />
+    <ClCompile Include="src\WP42SubDocument.cpp" />
+    <ClCompile Include="src\WP42SuppressPageCharacteristicsGroup.cpp" />
+    <ClCompile Include="src\WP42UnsupportedMultiByteFunctionGroup.cpp" />
+    <ClCompile Include="src\WP5AttributeGroup.cpp" />
+    <ClCompile Include="src\WP5BoxGroup.cpp" />
+    <ClCompile Include="src\WP5ContentListener.cpp" />
+    <ClCompile Include="src\WP5DefinitionGroup.cpp" />
+    <ClCompile Include="src\WP5ExtendedCharacterGroup.cpp" />
+    <ClCompile Include="src\WP5FileStructure.cpp" />
+    <ClCompile Include="src\WP5FixedLengthGroup.cpp" />
+    <ClCompile Include="src\WP5FontGroup.cpp" />
+    <ClCompile Include="src\WP5FontNameStringPoolPacket.cpp" />
+    <ClCompile Include="src\WP5FootnoteEndnoteGroup.cpp" />
+    <ClCompile Include="src\WP5GeneralPacketData.cpp" />
+    <ClCompile Include="src\WP5GeneralPacketIndex.cpp" />
+    <ClCompile Include="src\WP5GraphicsInformationPacket.cpp" />
+    <ClCompile Include="src\WP5Header.cpp" />
+    <ClCompile Include="src\WP5HeaderFooterGroup.cpp" />
+    <ClCompile Include="src\WP5IndentGroup.cpp" />
+    <ClCompile Include="src\WP5Listener.cpp" />
+    <ClCompile Include="src\WP5ListFontsUsedPacket.cpp" />
+    <ClCompile Include="src\WP5PageFormatGroup.cpp" />
+    <ClCompile Include="src\WP5Parser.cpp" />
+    <ClCompile Include="src\WP5Part.cpp" />
+    <ClCompile Include="src\WP5PrefixData.cpp" />
+    <ClCompile Include="src\WP5SingleByteFunction.cpp" />
+    <ClCompile Include="src\WP5SpecialHeaderIndex.cpp" />
+    <ClCompile Include="src\WP5StylesListener.cpp" />
+    <ClCompile Include="src\WP5SubDocument.cpp" />
+    <ClCompile Include="src\WP5TabGroup.cpp" />
+    <ClCompile Include="src\WP5TableEOLGroup.cpp" />
+    <ClCompile Include="src\WP5TableEOPGroup.cpp" />
+    <ClCompile Include="src\WP5UnsupportedFixedLengthGroup.cpp" />
+    <ClCompile Include="src\WP5UnsupportedVariableLengthGroup.cpp" />
+    <ClCompile Include="src\WP5VariableLengthGroup.cpp" />
+    <ClCompile Include="src\WP60Header.cpp" />
+    <ClCompile Include="src\WP61Header.cpp" />
+    <ClCompile Include="src\WP6AttributeGroup.cpp" />
+    <ClCompile Include="src\WP6BoxGroup.cpp" />
+    <ClCompile Include="src\WP6CharacterGroup.cpp" />
+    <ClCompile Include="src\WP6ColumnGroup.cpp" />
+    <ClCompile Include="src\WP6CommentAnnotationPacket.cpp" />
+    <ClCompile Include="src\WP6ContentListener.cpp" />
+    <ClCompile Include="src\WP6DefaultInitialFontPacket.cpp" />
+    <ClCompile Include="src\WP6DisplayNumberReferenceGroup.cpp" />
+    <ClCompile Include="src\WP6EOLGroup.cpp" />
+    <ClCompile Include="src\WP6ExtendedCharacterGroup.cpp" />
+    <ClCompile Include="src\WP6ExtendedDocumentSummaryPacket.cpp" />
+    <ClCompile Include="src\WP6FileStructure.cpp" />
+    <ClCompile Include="src\WP6FillStylePacket.cpp" />
+    <ClCompile Include="src\WP6FixedLengthGroup.cpp" />
+    <ClCompile Include="src\WP6FontDescriptorPacket.cpp" />
+    <ClCompile Include="src\WP6FootnoteEndnoteGroup.cpp" />
+    <ClCompile Include="src\WP6GeneralTextPacket.cpp" />
+    <ClCompile Include="src\WP6GraphicsBoxStylePacket.cpp" />
+    <ClCompile Include="src\WP6GraphicsCachedFileDataPacket.cpp" />
+    <ClCompile Include="src\WP6GraphicsFilenamePacket.cpp" />
+    <ClCompile Include="src\WP6Header.cpp" />
+    <ClCompile Include="src\WP6HeaderFooterGroup.cpp" />
+    <ClCompile Include="src\WP6HighlightGroup.cpp" />
+    <ClCompile Include="src\WP6HyperlinkPacket.cpp" />
+    <ClCompile Include="src\WP6Listener.cpp" />
+    <ClCompile Include="src\WP6NumberingMethodGroup.cpp" />
+    <ClCompile Include="src\WP6OutlineStylePacket.cpp" />
+    <ClCompile Include="src\WP6PageGroup.cpp" />
+    <ClCompile Include="src\WP6ParagraphGroup.cpp" />
+    <ClCompile Include="src\WP6Parser.cpp" />
+    <ClCompile Include="src\WP6Part.cpp" />
+    <ClCompile Include="src\WP6PrefixData.cpp" />
+    <ClCompile Include="src\WP6PrefixDataPacket.cpp" />
+    <ClCompile Include="src\WP6PrefixIndice.cpp" />
+    <ClCompile Include="src\WP6SetNumberGroup.cpp" />
+    <ClCompile Include="src\WP6SingleByteFunction.cpp" />
+    <ClCompile Include="src\WP6StyleGroup.cpp" />
+    <ClCompile Include="src\WP6StylesListener.cpp" />
+    <ClCompile Include="src\WP6SubDocument.cpp" />
+    <ClCompile Include="src\WP6TabGroup.cpp" />
+    <ClCompile Include="src\WP6TableStylePacket.cpp" />
+    <ClCompile Include="src\WP6UndoGroup.cpp" />
+    <ClCompile Include="src\WP6UnsupportedFixedLengthGroup.cpp" />
+    <ClCompile Include="src\WP6UnsupportedVariableLengthGroup.cpp" />
+    <ClCompile Include="src\WP6VariableLengthGroup.cpp" />
+    <ClCompile Include="src\WPDocument.cpp" />
+    <ClCompile Include="src\WPXContentListener.cpp" />
+    <ClCompile Include="src\WPXEncryption.cpp" />
+    <ClCompile Include="src\WPXHeader.cpp" />
+    <ClCompile Include="src\WPXListener.cpp" />
+    <ClCompile Include="src\WPXMemoryStream.cpp" />
+    <ClCompile Include="src\WPXPageSpan.cpp" />
+    <ClCompile Include="src\WPXParser.cpp" />
+    <ClCompile Include="src\WPXStylesListener.cpp" />
+    <ClCompile Include="src\WPXSubDocument.cpp" />
+    <ClCompile Include="src\WPXTable.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\librevenge\librevenge.vcxproj">
+      <Project>{333855bf-0205-470a-97b1-518cd9df8f78}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
