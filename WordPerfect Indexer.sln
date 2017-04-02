@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libwpd", "Libwpd", "{01D1E069-82C5-4C4D-AACC-6321D27FA424}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "librevenge", "librevenge\librevenge.vcxproj", "{333855BF-0205-470A-97B1-518CD9DF8F78}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libwpd", "libwpd\libwpd.vcxproj", "{790C0656-C22F-485F-8910-689B0D865D34}"
@@ -57,9 +55,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{333855BF-0205-470A-97B1-518CD9DF8F78} = {01D1E069-82C5-4C4D-AACC-6321D27FA424}
-		{790C0656-C22F-485F-8910-689B0D865D34} = {01D1E069-82C5-4C4D-AACC-6321D27FA424}
 	EndGlobalSection
 EndGlobal
