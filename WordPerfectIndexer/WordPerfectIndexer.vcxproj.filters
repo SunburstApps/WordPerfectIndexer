@@ -48,6 +48,9 @@
     <ClInclude Include="WordPerfectIndexer_i.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="FilterBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WordPerfectIndexer.rc">
