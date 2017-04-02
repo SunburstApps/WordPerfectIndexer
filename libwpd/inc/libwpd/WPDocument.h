@@ -27,18 +27,10 @@
 #ifndef WPDOCUMENT_H
 #define WPDOCUMENT_H
 
-#ifdef DLL_EXPORT
 #ifdef LIBWPD_BUILD
 #define WPDAPI __declspec(dllexport)
 #else
 #define WPDAPI __declspec(dllimport)
-#endif
-#else // !DLL_EXPORT
-#ifdef LIBWPD_VISIBILITY
-#define WPDAPI __attribute__((visibility("default")))
-#else
-#define WPDAPI
-#endif
 #endif
 
 #include <librevenge/librevenge.h>
