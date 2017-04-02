@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\librevenge-generators\librevenge-generators-api.h" />
+    <ClInclude Include="inc\librevenge-generators\librevenge-generators.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGCSVSpreadsheetGenerator.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGHTMLTextGenerator.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGRawDrawingGenerator.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGRawPresentationGenerator.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGRawSpreadsheetGenerator.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGRawTextGenerator.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGSVGPresentationGenerator.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGTextDrawingGenerator.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGTextPresentationGenerator.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGTextSpreadsheetGenerator.h" />
+    <ClInclude Include="inc\librevenge-generators\RVNGTextTextGenerator.h" />
+    <ClInclude Include="inc\librevenge-stream\librevenge-stream-api.h" />
+    <ClInclude Include="inc\librevenge-stream\librevenge-stream.h" />
+    <ClInclude Include="inc\librevenge-stream\RVNGDirectoryStream.h" />
+    <ClInclude Include="inc\librevenge-stream\RVNGStream.h" />
+    <ClInclude Include="inc\librevenge-stream\RVNGStreamImplementation.h" />
+    <ClInclude Include="inc\librevenge\librevenge-api.h" />
+    <ClInclude Include="inc\librevenge\librevenge.h" />
+    <ClInclude Include="inc\librevenge\RVNGBinaryData.h" />
+    <ClInclude Include="inc\librevenge\RVNGDrawingInterface.h" />
+    <ClInclude Include="inc\librevenge\RVNGPresentationInterface.h" />
+    <ClInclude Include="inc\librevenge\RVNGProperty.h" />
+    <ClInclude Include="inc\librevenge\RVNGPropertyList.h" />
+    <ClInclude Include="inc\librevenge\RVNGPropertyListVector.h" />
+    <ClInclude Include="inc\librevenge\RVNGSpreadsheetInterface.h" />
+    <ClInclude Include="inc\librevenge\RVNGString.h" />
+    <ClInclude Include="inc\librevenge\RVNGStringVector.h" />
+    <ClInclude Include="inc\librevenge\RVNGSVGDrawingGenerator.h" />
+    <ClInclude Include="inc\librevenge\RVNGTextInterface.h" />
+    <ClInclude Include="src\librevenge_internal.h" />
+    <ClInclude Include="src\RVNGHTMLTextTableStyle.h" />
+    <ClInclude Include="src\RVNGHTMLTextTextStyle.h" />
+    <ClInclude Include="src\RVNGMemoryStream.h" />
+    <ClInclude Include="src\RVNGOLEStream.h" />
+    <ClInclude Include="src\RVNGRawGeneratorBase.h" />
+    <ClInclude Include="src\RVNGZipStream.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\librevenge.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\RVNGBinaryData.cpp" />
+    <ClCompile Include="src\RVNGCSVSpreadsheetGenerator.cpp" />
+    <ClCompile Include="src\RVNGDirectoryStream.cpp" />
+    <ClCompile Include="src\RVNGHTMLTextGenerator.cpp" />
+    <ClCompile Include="src\RVNGHTMLTextTableStyle.cpp" />
+    <ClCompile Include="src\RVNGHTMLTextTextStyle.cpp" />
+    <ClCompile Include="src\RVNGMemoryStream.cpp" />
+    <ClCompile Include="src\RVNGOLEStream.cpp" />
+    <ClCompile Include="src\RVNGProperty.cpp" />
+    <ClCompile Include="src\RVNGPropertyList.cpp" />
+    <ClCompile Include="src\RVNGPropertyListVector.cpp" />
+    <ClCompile Include="src\RVNGRawDrawingGenerator.cpp" />
+    <ClCompile Include="src\RVNGRawGeneratorBase.cpp" />
+    <ClCompile Include="src\RVNGRawPresentationGenerator.cpp" />
+    <ClCompile Include="src\RVNGRawSpreadsheetGenerator.cpp" />
+    <ClCompile Include="src\RVNGRawTextGenerator.cpp" />
+    <ClCompile Include="src\RVNGStreamImplementation.cpp" />
+    <ClCompile Include="src\RVNGString.cpp" />
+    <ClCompile Include="src\RVNGStringVector.cpp" />
+    <ClCompile Include="src\RVNGSVGDrawingGenerator.cpp" />
+    <ClCompile Include="src\RVNGSVGPresentationGenerator.cpp" />
+    <ClCompile Include="src\RVNGTextDrawingGenerator.cpp" />
+    <ClCompile Include="src\RVNGTextPresentationGenerator.cpp" />
+    <ClCompile Include="src\RVNGTextSpreadsheetGenerator.cpp" />
+    <ClCompile Include="src\RVNGTextTextGenerator.cpp" />
+    <ClCompile Include="src\RVNGZipStream.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{333855BF-0205-470A-97B1-518CD9DF8F78}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>librevenge</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <ResolveNuGetPackages>false</ResolveNuGetPackages>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)inc</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,31 @@
+#include <Windows.h>
+
+VS_VERSION_INFO VERSIONINFO
+  FILEVERSION 1, 0, 0, 0
+  PRODUCTVERSION 1, 0, 0, 0
+  FILEFLAGSMASK 0
+  FILEFLAGS 0
+  FILEOS VOS__WINDOWS32
+  FILETYPE VFT_DLL
+  FILESUBTYPE VFT2_UNKNOWN
+  BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+      BLOCK "040904B0"
+      BEGIN
+        VALUE "CompanyName", "William Kent"
+        VALUE "FileDescription", "librevenge"
+        VALUE "FileVersion", "1.0.0.0"
+        VALUE "InternalName", "librevenge.dll"
+        VALUE "LegalCopyright", "Copyright © 2002-2006 William Lachance, Marc Maurer, Fridrich Strba, other contributers"
+        VALUE "OriginalFilename", "librevenge.dll"
+        VALUE "ProductName", "librevenge"
+        VALUE "ProductVersion", "1.0.0.0"
+      END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+      VALUE "Translation", 0x409, 1200
+    END
+  END
+
