@@ -266,6 +266,14 @@
   <ItemGroup>
     <Midl Include="WordPerfectIndexer.idl" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\librevenge\librevenge.vcxproj">
+      <Project>{333855bf-0205-470a-97b1-518cd9df8f78}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\libwpd\libwpd.vcxproj">
+      <Project>{790c0656-c22f-485f-8910-689b0d865d34}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
