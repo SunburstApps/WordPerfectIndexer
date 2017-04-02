@@ -65,7 +65,7 @@ int main(int argc, const char * argv[])
 		{
 			return ShowUsage();
 		}
-		else if (strncmp(argv[i], "/", 1) != 0)
+		else if (strncmp(argv[i], "/", 1) == 0)
 		{
 			fprintf(stderr, "Unknown option: %s\n", argv[i]);
 			return ShowUsage();
