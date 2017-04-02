@@ -31,6 +31,9 @@
     <ClCompile Include="WordPerfectIndexer_i.c">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="CWordPerfectFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -49,6 +52,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="FilterBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CWordPerfectFilter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
