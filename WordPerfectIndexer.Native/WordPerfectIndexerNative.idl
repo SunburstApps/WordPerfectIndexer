@@ -1,0 +1,18 @@
+// WordPerfectIndexerNative.idl : IDL source for WordPerfectIndexer.Native
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (WordPerfectIndexerNative.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(417E5A65-35F5-419D-8ABE-5101AE56299A),
+	version(1.0),
+]
+library WordPerfectIndexerNativeLib
+{
+	importlib("stdole2.tlb");
+};
+
