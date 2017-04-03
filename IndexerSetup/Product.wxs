@@ -10,6 +10,8 @@
       <ComponentRef Id="ProductComponent" />
       <ComponentRef Id="ProductComponent64" />
     </Feature>
+
+    <Property Id="ARPNOMODIFY" Value="1" />
   </Product>
 
   <Fragment>
