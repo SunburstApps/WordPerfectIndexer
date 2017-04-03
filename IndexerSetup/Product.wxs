@@ -58,4 +58,18 @@
       </File>
     </Component>
   </Fragment>
+
+  <Fragment>
+    <Component Id="PropertySchema" Guid="{C5D8E5A7-9DE1-48DB-A8AD-46B28D9B1FE6}" Directory="INSTALLFOLDER">
+      <File Id="WordPerfectIndexer.propdesc" Name="WordPerfectIndexer.propdesc" Source="$(var.SolutionDir)\WordPerfectIndexer\WordPerfectIndexer.propdesc" />
+    </Component>
+
+    <CustomAction Id="RegisterPropdesc" BinaryKey="RegisterPropdescExtension" DllEntry="RegisterPropDescFile" Execute="immediate" Return="check" />
+    <CustomAction Id="UnregisterPropdesc" BinaryKey="RegisterPropdescExtension" DllEntry="UnregisterPropDescFile" Execute="immediate" Return="check" />
+    <Binary Id="RegisterPropedescExtension" SourceFile="$(var.IndexerSetup.RegisterProperties.TargetPath)" />
+
+    <InstallExecuteSequence>
+      <Custom Action="RegisterPropdesc" After="InstallFiles" />
+    </InstallExecuteSequence>
+  </Fragment>
 </Wix>
