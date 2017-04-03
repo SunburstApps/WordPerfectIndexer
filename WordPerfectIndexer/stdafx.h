@@ -10,6 +10,7 @@
 
 #include "targetver.h"
 
+#define _CRT_SECURE_NO_WARNINGS
 #define _ATL_APARTMENT_THREADED
 
 #define _ATL_NO_AUTOMATIC_NAMESPACE
