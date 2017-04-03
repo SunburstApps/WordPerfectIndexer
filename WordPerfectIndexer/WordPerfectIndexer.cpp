@@ -2,8 +2,11 @@
 #include "resource.h"
 #include "WordPerfectIndexer_i.h"
 #include "dllmain.h"
+#include <propsys.h>
+#include <atlpath.h>
 
 using namespace ATL;
+extern HINSTANCE _AtlModuleInstance;
 
 STDAPI DllCanUnloadNow(void)
 {
@@ -30,6 +33,18 @@ STDAPI DllInstall(BOOL bInstall, _In_opt_  LPCWSTR pszCmdLine)
 	HRESULT hr = E_FAIL;
 	static const wchar_t szUserSwitch[] = L"user";
 
+#if IS_MASTER_INDEXER_LIBRARY
+	CPath PropdescPath;
+	WCHAR PathBuffer[MAX_PATH + 1];
+	ZeroMemory(PathBuffer, (MAX_PATH + 1) * sizeof(WCHAR));
+	GetModuleFileName(_AtlModuleInstance, PathBuffer, MAX_PATH + 1);
+	PropdescPath = PathBuffer;
+
+	PropdescPath.RemoveFileSpec();
+	PropdescPath.AddBackslash();
+	PropdescPath.Append(L"WordPerfectIndexer.propdesc");
+#endif
+
 	if (pszCmdLine != NULL)
 	{
 		if (_wcsnicmp(pszCmdLine, szUserSwitch, _countof(szUserSwitch)) == 0)
@@ -45,10 +60,18 @@ STDAPI DllInstall(BOOL bInstall, _In_opt_  LPCWSTR pszCmdLine)
 		{
 			DllUnregisterServer();
 		}
+
+#ifdef IS_MASTER_INDEXER_LIBRARY
+		if (SUCCEEDED(hr)) ::PSRegisterPropertySchema(PropdescPath);
+#endif
 	}
 	else
 	{
 		hr = DllUnregisterServer();
+
+#if IS_MASTER_INDEXER_LIBRARY
+		if (SUCCEEDED(hr)) ::PSUnregisterPropertySchema(PropdescPath);
+#endif
 	}
 
 	return hr;
