@@ -265,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="WordPerfectIndexer.def" />
+    <None Include="WordPerfectIndexer.propdesc" />
     <None Include="WordPerfectIndexer.rgs" />
   </ItemGroup>
   <ItemGroup>
