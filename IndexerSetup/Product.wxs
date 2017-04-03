@@ -9,7 +9,7 @@
     <Feature Id="ProductFeature" Title="WordPerfect Indexer" Level="1">
       <ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="ProductComponents64" />
-      <swid:Tag Regid="regid.2016-01-sunsol.me" Type="application" />
+      <swid:Tag Regid="regid.2016-01.me.sunsol" Type="application" />
     </Feature>
   </Product>
 
