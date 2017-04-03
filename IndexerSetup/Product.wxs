@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:swid="http://wixtoolset.org/schemas/v4/wxs/tag">
+	<Product Id="*" Name="WordPerfect Indexer" Language="1033" Version="1.0.0.0" Manufacturer="Sunburst Solutions" UpgradeCode="225be42d-9e5d-4d81-84e3-9b6f2eaa2d1e">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="WordPerfect Indexer" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="ProductComponents64" />
+      <swid:Tag Regid="regid.2016-01-sunsol.me" Type="application" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="WordPerfect Indexer" />
+			</Directory>
+		</Directory>
+
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="ProductComponent">
+        <File Id="librevenge.dll" Name="librevenge.dll" KeyPath="yes" Source="Release\librevenge.dll" />
+        <File Id="libwpd.dll" Name="libwpd.dll" KeyPath="yes" Source="Release\libwpd.dll" />
+        <File Id="WordPerfectIndexer.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="Release\WordPerfectIndexer.dll" />
+        <File Id="wpd2text.exe" Name="wpd2text.exe" KeyPath="yes" Source="Release\wpd2text.exe" />
+        <File Id="zlib.dll" Name="zlib1.dll" KeyPath="yes" Source="Release\zlib1.exe" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+	<Fragment>
+    <Directory Id="INSTLALFOLDER">
+      <Directory Id="INSTALLFOLDER64" Name="x64" />
+    </Directory>
+
+    <DirectoryRef Id="INSTALLFOLDER64">
+      <Component Id="ProductComponents64">
+        <File Id="librevenge64.dll" Name="librevenge.dll" KeyPath="yes" Source="x64\Release\librevenge.dll" />
+        <File Id="libwpd64.dll" Name="libwpd.dll" KeyPath="yes" Source="x64\Release\libwpd.dll" />
+        <File Id="WordPerfectIndexer64.dll" Name="WordPerfectIndexer64.dll" KeyPath="yes" Source="x64\Release\WordPerfectIndexer.dll" />
+        <File Id="wpd2text64.exe" Name="wpd2text.exe" KeyPath="yes" Source="x64\Release\wpd2text.exe" />
+        <File Id="zlib64.dll" Name="zlib1.d;;" KeyPath="yes" Source="x64\Release\zlib1.exe" />
+      </Component>
+    </DirectoryRef>
+	</Fragment>
+</Wix>
