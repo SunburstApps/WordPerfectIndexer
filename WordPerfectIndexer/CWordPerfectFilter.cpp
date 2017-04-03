@@ -5,9 +5,20 @@
 #include <librevenge-stream/librevenge-stream.h>
 #include <libwpd/libwpd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-#define strequal(a, b) (strcmp(a,b) == 0)
+namespace /* anonymous */
+{
+	PWSTR StrDupA2W(PCSTR ascii)
+	{
+		size_t asciilen = strlen(ascii);
+		size_t widelen = MultiByteToWideChar(CP_ACP, 0, ascii, asciilen, nullptr, 0);
 
+		PWSTR wide = (PWSTR)malloc(widelen * sizeof(wchar_t));
+		MultiByteToWideChar(CP_ACP, 0, ascii, asciilen, wide, widelen);
+		return wide;
+	}
+}
 
 class CWordPerfectFilter::Private
 {
@@ -56,10 +67,10 @@ HRESULT CWordPerfectFilter::OnInit()
 
 	librevenge::RVNGFileStream RevengeStream(priv->TempFilePath);
 	libwpd::WPDResult wpdError = libwpd::WPDocument::parse(&RevengeStream, priv->Generator, nullptr);
+	DeleteFileA(priv->TempFilePath);
+
 	if (wpdError != libwpd::WPD_OK)
 	{
-		DeleteFileA(priv->TempFilePath);
-
 		switch (wpdError)
 		{
 		case libwpd::WPD_FILE_ACCESS_ERROR:
@@ -79,5 +90,21 @@ HRESULT CWordPerfectFilter::OnInit()
 
 HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& chunkValue)
 {
-	return E_NOTIMPL;
+	const GUID WordPerfectFilterGuid = { 0x64F0A51B, 0xF686, 0x4EC2, 0xBE, 0xBC, 0x65, 0x4C, 0x17, 0x4E, 0x6E, 0x73 };
+	PROPERTYKEY BodyTextPropKey = { WordPerfectFilterGuid, 100 };
+
+	PWSTR BodyText = StrDupA2W(priv->BodyText.cstr());
+	chunkValue.SetTextValue(BodyTextPropKey, BodyText);
+	free((void *)BodyText);
+
+	return FILTER_E_END_OF_CHUNKS;
+}
+
+CWordPerfectFilter::~CWordPerfectFilter()
+{
+	if (priv != nullptr)
+	{
+		delete priv->Generator;
+		delete priv;
+	}
 }

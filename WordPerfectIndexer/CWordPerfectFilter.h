@@ -20,6 +20,7 @@ private:
 
 public:
 	CWordPerfectFilter() {}
+	virtual ~CWordPerfectFilter();
 
 	DECLARE_REGISTRY_RESOURCEID(IDR_WORDPERFECTINDEXER)
 	DECLARE_NOT_AGGREGATABLE(CWordPerfectFilter)
