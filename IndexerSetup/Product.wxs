@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:swid="http://wixtoolset.org/schemas/v4/wxs/tag">
-	<Product Id="*" Name="WordPerfect Indexer" Language="1033" Version="1.0.0.0" Manufacturer="Sunburst Solutions" UpgradeCode="225be42d-9e5d-4d81-84e3-9b6f2eaa2d1e">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+  <Product Id="*" Name="WordPerfect Indexer" Language="1033" Version="1.0.0.0" Manufacturer="Sunburst Solutions" UpgradeCode="225be42d-9e5d-4d81-84e3-9b6f2eaa2d1e">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate EmbedCab="yes" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
 
-		<Feature Id="ProductFeature" Title="WordPerfect Indexer" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
+    <Feature Id="ProductFeature" Title="WordPerfect Indexer" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="ProductComponents64" />
       <swid:Tag Regid="regid.2016-01-sunsol.me" Type="application" />
-		</Feature>
-	</Product>
+    </Feature>
+  </Product>
 
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLFOLDER" Name="WordPerfect Indexer" />
-			</Directory>
-		</Directory>
+      </Directory>
+    </Directory>
 
     <DirectoryRef Id="INSTALLFOLDER">
       <Component Id="ProductComponent">
@@ -40,7 +40,7 @@
     </DirectoryRef>
   </Fragment>
 
-	<Fragment>
+  <Fragment>
     <Directory Id="INSTLALFOLDER">
       <Directory Id="INSTALLFOLDER64" Name="x64" />
     </Directory>
@@ -54,5 +54,5 @@
         <File Id="zlib64.dll" Name="zlib1.dll" KeyPath="yes" Source="x64\Release\zlib1.exe" />
       </Component>
     </DirectoryRef>
-	</Fragment>
+  </Fragment>
 </Wix>
