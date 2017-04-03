@@ -46,12 +46,20 @@
     </Directory>
 
     <DirectoryRef Id="INSTALLFOLDER64">
-      <Component Id="ProductComponents64">
+      <Component Id="ProductComponents64" Win64="yes">
         <File Id="librevenge64.dll" Name="librevenge.dll" KeyPath="yes" Source="x64\Release\librevenge.dll" />
         <File Id="libwpd64.dll" Name="libwpd.dll" KeyPath="yes" Source="x64\Release\libwpd.dll" />
         <File Id="WordPerfectIndexer64.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="x64\Release\WordPerfectIndexer.dll" />
         <File Id="wpd2text64.exe" Name="wpd2text.exe" KeyPath="yes" Source="x64\Release\wpd2text.exe" />
         <File Id="zlib64.dll" Name="zlib1.dll" KeyPath="yes" Source="x64\Release\zlib1.exe" />
+
+        <File Id="WordPerfectIndexer.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="Release\WordPerfectIndexer.dll">
+          <TypeLib Id="{FAABE005-73E7-4015-895D-B9B1E30BF26A}" Description="WordPerfect Indexer Type Library" Language="0" MajorVersion="1" MinorVersion="0">
+            <Class Id="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Context="InprocServer32" Description="WordPerfect Filter" ThreadingModel="both" Version="1.0" />
+          </TypeLib>
+        </File>
+
+        <Class Id="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Description="WordPerfect Filter" />
       </Component>
     </DirectoryRef>
   </Fragment>
