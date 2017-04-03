@@ -20,7 +20,7 @@
     </Directory>
 
     <DirectoryRef Id="INSTALLFOLDER">
-      <Component Id="ProductComponent">
+      <Component Id="ProductComponent" Guid="{3DF2827D-0BAF-456A-8320-00F3AE5B9969}">
         <File Id="librevenge.dll" Name="librevenge.dll" Source="$(var.SolutionDir)\Release\librevenge.dll" />
         <File Id="libwpd.dll" Name="libwpd.dll" Source="$(var.SolutionDir)\Release\libwpd.dll" />
         <File Id="wpd2text.exe" Name="wpd2text.exe" Source="$(var.SolutionDir)\Release\wpd2text.exe" />
@@ -44,7 +44,7 @@
     </DirectoryRef>
 
     <DirectoryRef Id="INSTALLFOLDER64">
-      <Component Id="ProductComponent64" Win64="yes">
+      <Component Id="ProductComponent64" Win64="yes" Guid="{53B6D32C-2A5D-4AEE-AF9D-AA3FBE5CD6FE}">
         <File Id="librevenge64.dll" Name="librevenge.dll" Source="$(var.SolutionDir)\x64\Release\librevenge.dll" />
         <File Id="libwpd64.dll" Name="libwpd.dll" Source="$(var.SolutionDir)\x64\Release\libwpd.dll" />
         <File Id="wpd2text64.exe" Name="wpd2text.exe" Source="$(var.SolutionDir)\x64\Release\wpd2text.exe" />
