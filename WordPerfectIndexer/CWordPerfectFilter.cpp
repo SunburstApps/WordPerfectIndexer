@@ -6,30 +6,14 @@
 #include <libwpd/libwpd.h>
 #include <stdio.h>
 
-namespace /* anonymous */
-{
-	class WordPerfectIndexerGenerator : public librevenge::RVNGTextTextGenerator
-	{
-	public:
-		librevenge::RVNGPropertyList Metadata;
+#define strequal(a, b) (strcmp(a,b) == 0)
 
-		WordPerfectIndexerGenerator(librevenge::RVNGString Document) : librevenge::RVNGTextTextGenerator(Document, false) {}
-
-		void setDocuemntMetaData(const librevenge::RVNGPropertyList& metadata)
-		{
-			librevenge::RVNGPropertyList::Iter iter(metadata);
-			for (iter.rewind(); iter.next(); ) {
-				Metadata.insert(iter.key(), iter()->clone());
-			}
-		}
-	};
-}
 
 class CWordPerfectFilter::Private
 {
 public:
 	char TempFilePath[MAX_PATH + 1];
-	WordPerfectIndexerGenerator *Generator;
+	librevenge::RVNGTextTextGenerator *Generator;
 	librevenge::RVNGString BodyText;
 	bool CanParse = true;
 };
@@ -37,7 +21,7 @@ public:
 HRESULT CWordPerfectFilter::OnInit()
 {
 	priv = new CWordPerfectFilter::Private;
-	priv->Generator = new WordPerfectIndexerGenerator(priv->BodyText);
+	priv->Generator = new librevenge::RVNGTextTextGenerator(priv->BodyText);
 
 	char TempPath[MAX_PATH + 1];
 	if (GetTempPathA(MAX_PATH + 1, TempPath) == 0)
@@ -71,7 +55,6 @@ HRESULT CWordPerfectFilter::OnInit()
 	}
 
 	librevenge::RVNGFileStream RevengeStream(priv->TempFilePath);
-	priv->Generator = new WordPerfectIndexerGenerator(priv->BodyText);
 	libwpd::WPDResult wpdError = libwpd::WPDocument::parse(&RevengeStream, priv->Generator, nullptr);
 	if (wpdError != libwpd::WPD_OK)
 	{
