@@ -32,18 +32,6 @@ STDAPI DllInstall(BOOL bInstall, _In_opt_  LPCWSTR pszCmdLine)
 {
 	HRESULT hr = E_FAIL;
 
-#if IS_MASTER_INDEXER_LIBRARY
-	CPath PropdescPath;
-	WCHAR PathBuffer[MAX_PATH + 1];
-	ZeroMemory(PathBuffer, (MAX_PATH + 1) * sizeof(WCHAR));
-	GetModuleFileName(_AtlModuleInstance, PathBuffer, MAX_PATH + 1);
-	PropdescPath = PathBuffer;
-
-	PropdescPath.RemoveFileSpec();
-	PropdescPath.AddBackslash();
-	PropdescPath.Append(L"WordPerfectIndexer.propdesc");
-#endif
-
 	if (bInstall)
 	{	
 		hr = DllRegisterServer();
@@ -51,18 +39,10 @@ STDAPI DllInstall(BOOL bInstall, _In_opt_  LPCWSTR pszCmdLine)
 		{
 			DllUnregisterServer();
 		}
-
-#ifdef IS_MASTER_INDEXER_LIBRARY
-		if (SUCCEEDED(hr)) ::PSRegisterPropertySchema(PropdescPath);
-#endif
 	}
 	else
 	{
 		hr = DllUnregisterServer();
-
-#if IS_MASTER_INDEXER_LIBRARY
-		if (SUCCEEDED(hr)) ::PSUnregisterPropertySchema(PropdescPath);
-#endif
 	}
 
 	return hr;
