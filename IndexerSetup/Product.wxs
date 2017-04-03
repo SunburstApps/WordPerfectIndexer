@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:swid="http://schemas.microsoft.com/wix/TagExtension">
   <Product Id="*" Name="WordPerfect Indexer" Language="1033" Version="1.0.0.0" Manufacturer="Sunburst Solutions" UpgradeCode="225be42d-9e5d-4d81-84e3-9b6f2eaa2d1e">
-    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
@@ -43,19 +43,17 @@
       <Directory Id="INSTALLFOLDER64" Name="x64" />
     </DirectoryRef>
 
-    <DirectoryRef Id="INSTALLFOLDER64">
-      <Component Id="ProductComponent64" Win64="yes" Guid="{53B6D32C-2A5D-4AEE-AF9D-AA3FBE5CD6FE}">
-        <File Id="librevenge64.dll" Name="librevenge.dll" Source="$(var.SolutionDir)\x64\Release\librevenge.dll" />
-        <File Id="libwpd64.dll" Name="libwpd.dll" Source="$(var.SolutionDir)\x64\Release\libwpd.dll" />
-        <File Id="wpd2text64.exe" Name="wpd2text.exe" Source="$(var.SolutionDir)\x64\Release\wpd2text.exe" />
-        <File Id="zlib64.dll" Name="zlib1.dll" Source="$(var.SolutionDir)\x64\Release\zlib1.dll" />
+    <Component Id="ProductComponent64" Guid="{53B6D32C-2A5D-4AEE-AF9D-AA3FBE5CD6FE}" Directory="INSTALLFOLDER64">
+      <File Id="librevenge64.dll" Name="librevenge.dll" Source="$(var.SolutionDir)\x64\Release\librevenge.dll" />
+      <File Id="libwpd64.dll" Name="libwpd.dll" Source="$(var.SolutionDir)\x64\Release\libwpd.dll" />
+      <File Id="wpd2text64.exe" Name="wpd2text.exe" Source="$(var.SolutionDir)\x64\Release\wpd2text.exe" />
+      <File Id="zlib64.dll" Name="zlib1.dll" Source="$(var.SolutionDir)\x64\Release\zlib1.dll" />
 
-        <File Id="WordPerfectIndexer64.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="$(var.SolutionDir)\Release\WordPerfectIndexer.dll">
-          <TypeLib Id="{FAABE005-73E7-4015-895D-B9B1E30BF26A}" Description="WordPerfect Indexer Type Library" Language="0" MajorVersion="1" MinorVersion="0">
-            <Class Id="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Context="InprocServer32" Description="WordPerfect Filter" ThreadingModel="both" Version="1.0" />
-          </TypeLib>
-        </File>
-      </Component>
-    </DirectoryRef>
+      <File Id="WordPerfectIndexer64.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="$(var.SolutionDir)\Release\WordPerfectIndexer.dll">
+        <TypeLib Id="{FAABE005-73E7-4015-895D-B9B1E30BF26A}" Description="WordPerfect Indexer Type Library" Language="0" MajorVersion="1" MinorVersion="0">
+          <Class Id="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Context="InprocServer32" Description="WordPerfect Filter" ThreadingModel="both" Version="1.0" />
+        </TypeLib>
+      </File>
+    </Component>
   </Fragment>
 </Wix>
