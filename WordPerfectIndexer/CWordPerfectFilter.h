@@ -14,6 +14,10 @@ class ATL_NO_VTABLE CWordPerfectFilter :
 	public CComCoClass<CWordPerfectFilter, &CLSID_WordPerfectFilter>,
 	public CFilterBase
 {
+private:
+	class Private;
+	Private *priv;
+
 public:
 	CWordPerfectFilter() {}
 
