@@ -42,7 +42,7 @@
         <File Id="libwpd64.dll" Name="libwpd.dll" KeyPath="yes" Source="x64\Release\libwpd.dll" />
         <File Id="WordPerfectIndexer64.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="x64\Release\WordPerfectIndexer.dll" />
         <File Id="wpd2text64.exe" Name="wpd2text.exe" KeyPath="yes" Source="x64\Release\wpd2text.exe" />
-        <File Id="zlib64.dll" Name="zlib1.d;;" KeyPath="yes" Source="x64\Release\zlib1.exe" />
+        <File Id="zlib64.dll" Name="zlib1.dll" KeyPath="yes" Source="x64\Release\zlib1.exe" />
       </Component>
     </DirectoryRef>
 	</Fragment>
