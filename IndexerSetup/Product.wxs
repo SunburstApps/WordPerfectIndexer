@@ -64,8 +64,8 @@
       <File Id="WordPerfectIndexer.propdesc" Name="WordPerfectIndexer.propdesc" Source="$(var.SolutionDir)\WordPerfectIndexer\WordPerfectIndexer.propdesc" />
     </Component>
 
-    <CustomAction Id="RegisterPropdesc" BinaryKey="RegisterPropdescExtension" DllEntry="RegisterPropDescFile" Execute="immediate" Return="check" />
-    <Binary Id="RegisterPropedescExtension" SourceFile="$(var.IndexerSetup.RegisterProperties.TargetPath)" />
+    <CustomAction Id="RegisterPropdesc" BinaryKey="PropdescExt" DllEntry="RegisterPropDescFile" Execute="immediate" Return="check" />
+    <Binary Id="PropdescExt" SourceFile="$(var.IndexerSetup.RegisterProperties.TargetPath)" />
 
     <InstallExecuteSequence>
       <Custom Action="RegisterPropdesc" After="InstallFiles" />
