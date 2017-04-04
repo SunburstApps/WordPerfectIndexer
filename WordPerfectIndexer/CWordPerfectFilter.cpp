@@ -94,7 +94,16 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& chunkValue)
 	PROPERTYKEY BodyTextPropKey = { WordPerfectFilterGuid, 100 };
 
 	PWSTR BodyText = StrDupA2W(priv->BodyText.cstr());
-	chunkValue.SetTextValue(BodyTextPropKey, BodyText);
+
+	const size_t MaxColumnLength = 1048576;
+	WCHAR TruncatedBodyText[MaxColumnLength / sizeof(WCHAR)];
+	if (wcslen(BodyText) > MaxColumnLength)
+	{
+		wcsncpy_s(TruncatedBodyText, BodyText, MaxColumnLength - 3);
+		wcsncat_s(TruncatedBodyText, L"...", 3);
+	}
+
+	chunkValue.SetTextValue(BodyTextPropKey, TruncatedBodyText);
 	free((void *)BodyText);
 
 	return FILTER_E_END_OF_CHUNKS;
