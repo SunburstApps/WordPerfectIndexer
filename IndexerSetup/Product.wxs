@@ -9,6 +9,7 @@
     <Feature Id="ProductFeature" Title="WordPerfect Indexer" Level="1">
       <ComponentRef Id="ProductComponent" />
       <ComponentRef Id="ProductComponent64" />
+      <ComponentRef Id="PropertySchema" />
     </Feature>
 
     <Property Id="ARPNOMODIFY" Value="1" />
