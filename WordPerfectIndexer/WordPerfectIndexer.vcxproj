@@ -283,6 +283,11 @@
       <Project>{790c0656-c22f-485f-8910-689b0d865d34}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="PropertyDescriptionSchema.xsd">
+      <FileType>XML</FileType>
+    </None>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

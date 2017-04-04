@@ -77,4 +77,9 @@
       <Filter>Source Files</Filter>
     </Midl>
   </ItemGroup>
+  <ItemGroup>
+    <Xsd Include="PropertyDescriptionSchema.xsd">
+      <Filter>Header Files</Filter>
+    </Xsd>
+  </ItemGroup>
 </Project>
