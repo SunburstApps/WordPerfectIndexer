@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:swid="http://schemas.microsoft.com/wix/TagExtension">
   <Product Id="*" Name="WordPerfect Indexer" Language="1033" Version="1.0.0.0" Manufacturer="Sunburst Solutions" UpgradeCode="225be42d-9e5d-4d81-84e3-9b6f2eaa2d1e">
-    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
@@ -23,7 +23,7 @@
     </Directory>
 
     <DirectoryRef Id="INSTALLFOLDER">
-      <Component Id="ProductComponent" Guid="{3DF2827D-0BAF-456A-8320-00F3AE5B9969}">
+      <Component Id="ProductComponent" Guid="{3DF2827D-0BAF-456A-8320-00F3AE5B9969}" Win64="no">
         <File Id="librevenge.dll" Name="librevenge.dll" Source="$(var.SolutionDir)\Release\librevenge.dll" />
         <File Id="libwpd.dll" Name="libwpd.dll" Source="$(var.SolutionDir)\Release\libwpd.dll" />
         <File Id="wpd2text.exe" Name="wpd2text.exe" Source="$(var.SolutionDir)\Release\wpd2text.exe" />
