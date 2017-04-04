@@ -3,7 +3,7 @@
   <propertyDescriptionList publisher="Sunburst Solutions" product="WordPerfect Indexer">
     <propertyDescription name="Sunburst.WordPerfectIndexer.BodyText" formatID="{64F0A51B-F6B6-4EC2-BE8C-654C174E6E73}" propID="100">
       <description>The full text of the body of the WordPerfect document.</description>
-      <searchInfo inInvertedIndex="true" isColumn="true" columnIndexType="OnDemand" maxSize="1048576" />
+      <searchInfo inInvertedIndex="true" isColumn="true" columnIndexType="OnDemand" maxSize="1048576" mnemonics="wpd-body" />
       <typeInfo type="String" multipleValues="false" isViewable="true" />
       <labelInfo label="WordPerfect Body Text" invitationText="Enter text in the document" />
       <displayInfo displayType="String">
