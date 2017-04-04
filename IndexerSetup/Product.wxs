@@ -57,6 +57,8 @@
           <Class Id="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Context="InprocServer32" Description="WordPerfect Filter" ThreadingModel="both" Version="1.0" />
         </TypeLib>
       </File>
+
+      <RegistryValue Root="HKCR" Key="CLSID\{D1A975AB-725A-4804-ADC1-4BC3DB60621C}\PersistentAddinsRegistered\{89BCB740-6119-101A-BCB7-00DD010655AF}" Value="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Type="string" Action="write" />
     </Component>
   </Fragment>
 
