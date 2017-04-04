@@ -26,7 +26,7 @@
   <xs:element name="propertyDescription">
     <xs:complexType>
       <xs:all>
-        <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="description" minOccurs="0" maxOccurs="1" />
         <xs:element ref="searchInfo" minOccurs="1" maxOccurs="1" />
         <xs:element ref="labelInfo" minOccurs="0" maxOccurs="1" />
         <xs:element ref="typeInfo" minOccurs="0" maxOccurs="1" />
@@ -176,189 +176,210 @@
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="stringFormat">
+    <xs:complexType>
+      <xs:attribute name="formatAs">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="General"/>
+            <xs:enumeration value="FileName"/>
+            <xs:enumeration value="FilePath"/>
+            <xs:enumeration value="Hyperlink"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="booleanFormat">
+    <xs:complexType>
+      <xs:attribute name="formatAs">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="YesNo"/>
+            <xs:enumeration value="OnOff"/>
+            <xs:enumeration value="TrueFalse"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="numberFormat">
+    <xs:complexType>
+      <xs:attribute name="formatAs">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="General"/>
+            <xs:enumeration value="Percentage"/>
+            <xs:enumeration value="ByteSize"/>
+            <xs:enumeration value="KBSize"/>
+            <xs:enumeration value="SampleSize"/>
+            <xs:enumeration value="Bitrate"/>
+            <xs:enumeration value="SampleRate"/>
+            <xs:enumeration value="FrameRate"/>
+            <xs:enumeration value="Pixels"/>
+            <xs:enumeration value="DPI"/>
+            <xs:enumeration value="Duration"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="formatDurationAs">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="hh:mm"/>
+            <xs:enumeration value="hh:mm:ss"/>
+            <xs:enumeration value="hh:mm:ss.fff"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="dateTimeFormat">
+    <xs:complexType>
+      <xs:attribute name="formatAs">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="General"/>
+            <xs:enumeration value="Month"/>
+            <xs:enumeration value="YearMonth"/>
+            <xs:enumeration value="Year"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="formatTimeAs">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="ShortTime"/>
+            <xs:enumeration value="LongTime"/>
+            <xs:enumeration value="HideTime"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="formatDateAs">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="ShortDate"/>
+            <xs:enumeration value="LongDate"/>
+            <xs:enumeration value="HideDate"/>
+            <xs:enumeration value="RelativeShortDate"/>
+            <xs:enumeration value="RelativeLongDate"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="enumeratedList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="enum" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element ref="enumRange" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+
+      <xs:attribute name="defaultText" type="xs:string"/>
+      <xs:attribute name="useValueForDefault" type="xs:boolean"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="enum">
+    <xs:complexType>
+      <xs:attribute name="value" type="xs:string" use="required"/>
+      <xs:attribute name="text" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="enumRange">
+    <xs:complexType>
+      <xs:attribute name="minValue" type="xs:string" use="required"/>
+      <xs:attribute name="setValue" type="xs:string"/>
+      <xs:attribute name="text" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="drawControl">
+    <xs:complexType>
+      <xs:attribute name="control">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Default"/>
+            <xs:enumeration value="MultiLineText"/>
+            <xs:enumeration value="MultiValueText"/>
+            <xs:enumeration value="PercentBar"/>
+            <xs:enumeration value="ProgressBar"/>
+            <xs:enumeration value="Rating"/>
+            <xs:enumeration value="StaticText"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="editControl">
+    <xs:complexType>
+      <xs:attribute name="control">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Default"/>
+            <xs:enumeration value="Calendar"/>
+            <xs:enumeration value="CheckboxDropList"/>
+            <xs:enumeration value="DropList"/>
+            <xs:enumeration value="MultiLineText"/>
+            <xs:enumeration value="MultiValueText"/>
+            <xs:enumeration value="Rating"/>
+            <xs:enumeration value="Text"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="filterControl">
+    <xs:complexType>
+      <xs:attribute name="control">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Default"/>
+            <xs:enumeration value="Calendar"/>
+            <xs:enumeration value="Rating"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="queryControl">
+    <xs:complexType>
+      <xs:attribute name="control">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Default"/>
+            <xs:enumeration value="Boolean"/>
+            <xs:enumeration value="Calendar"/>
+            <xs:enumeration value="CheckboxDropList"/>
+            <xs:enumeration value="DropList"/>
+            <xs:enumeration value="MultiValueText"/>
+            <xs:enumeration value="NumericText"/>
+            <xs:enumeration value="Rating"/>
+            <xs:enumeration value="Text"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
   <xs:element name="displayInfo">
     <xs:complexType>
       <xs:all>
-        <xs:element name="stringFormat" minOccurs="0" maxOccurs="1">
-          <xs:complexType>
-            <xs:attribute name="formatAs">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="General"/>
-                  <xs:enumeration value="FileName"/>
-                  <xs:enumeration value="FilePath"/>
-                  <xs:enumeration value="Hyperlink"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="booleanFormat" minOccurs="0" maxOccurs="1">
-          <xs:complexType>
-            <xs:attribute name="formatAs">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="YesNo"/>
-                  <xs:enumeration value="OnOff"/>
-                  <xs:enumeration value="TrueFalse"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="numberFormat" minOccurs="0" maxOccurs="1">
-          <xs:complexType>
-            <xs:attribute name="formatAs">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="General"/>
-                  <xs:enumeration value="Percentage"/>
-                  <xs:enumeration value="ByteSize"/>
-                  <xs:enumeration value="KBSize"/>
-                  <xs:enumeration value="SampleSize"/>
-                  <xs:enumeration value="Bitrate"/>
-                  <xs:enumeration value="SampleRate"/>
-                  <xs:enumeration value="FrameRate"/>
-                  <xs:enumeration value="Pixels"/>
-                  <xs:enumeration value="DPI"/>
-                  <xs:enumeration value="Duration"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-            <xs:attribute name="formatDurationAs">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="hh:mm"/>
-                  <xs:enumeration value="hh:mm:ss"/>
-                  <xs:enumeration value="hh:mm:ss.fff"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="dateTimeFormat" minOccurs="0" maxOccurs="1">
-          <xs:complexType>
-            <xs:attribute name="formatAs">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="General"/>
-                  <xs:enumeration value="Month"/>
-                  <xs:enumeration value="YearMonth"/>
-                  <xs:enumeration value="Year"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-            <xs:attribute name="formatTimeAs">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="ShortTime"/>
-                  <xs:enumeration value="LongTime"/>
-                  <xs:enumeration value="HideTime"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-            <xs:attribute name="formatDateAs">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="ShortDate"/>
-                  <xs:enumeration value="LongDate"/>
-                  <xs:enumeration value="HideDate"/>
-                  <xs:enumeration value="RelativeShortDate"/>
-                  <xs:enumeration value="RelativeLongDate"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="enumeratedList" minOccurs="0" maxOccurs="1">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="enum" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:attribute name="value" type="xs:string" use="required"/>
-                  <xs:attribute name="text" type="xs:string" use="required"/>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="enumRange" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:attribute name="minValue" type="xs:string" use="required"/>
-                  <xs:attribute name="setValue" type="xs:string"/>
-                  <xs:attribute name="text" type="xs:string"/>
-                </xs:complexType>
-              </xs:element>
-            </xs:sequence>
-
-            <xs:attribute name="defaultText" type="xs:string"/>
-            <xs:attribute name="useValueForDefault" type="xs:boolean"/>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="drawControl" minOccurs="0" maxOccurs="1">
-          <xs:complexType>
-            <xs:attribute name="control">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="Default"/>
-                  <xs:enumeration value="MultiLineText"/>
-                  <xs:enumeration value="MultiValueText"/>
-                  <xs:enumeration value="PercentBar"/>
-                  <xs:enumeration value="ProgressBar"/>
-                  <xs:enumeration value="Rating"/>
-                  <xs:enumeration value="StaticText"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="editControl" minOccurs="0" maxOccurs="1">
-          <xs:complexType>
-            <xs:attribute name="control">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="Default"/>
-                  <xs:enumeration value="Calendar"/>
-                  <xs:enumeration value="CheckboxDropList"/>
-                  <xs:enumeration value="DropList"/>
-                  <xs:enumeration value="MultiLineText"/>
-                  <xs:enumeration value="MultiValueText"/>
-                  <xs:enumeration value="Rating"/>
-                  <xs:enumeration value="Text"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="filterControl" minOccurs="0" maxOccurs="1">
-          <xs:complexType>
-            <xs:attribute name="control">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="Default"/>
-                  <xs:enumeration value="Calendar"/>
-                  <xs:enumeration value="Rating"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="queryControl" minOccurs="0" maxOccurs="1">
-          <xs:complexType>
-            <xs:attribute name="control">
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:enumeration value="Default"/>
-                  <xs:enumeration value="Boolean"/>
-                  <xs:enumeration value="Calendar"/>
-                  <xs:enumeration value="CheckboxDropList"/>
-                  <xs:enumeration value="DropList"/>
-                  <xs:enumeration value="MultiValueText"/>
-                  <xs:enumeration value="NumericText"/>
-                  <xs:enumeration value="Rating"/>
-                  <xs:enumeration value="Text"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:attribute>
-          </xs:complexType>
-        </xs:element>
+        <xs:element ref="stringFormat" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="booleanFormat" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="numberFormat"  minOccurs="0" maxOccurs="1" />
+        <xs:element ref="dateTimeFormat" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="enumeratedList" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="drawControl" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="editControl" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="filterControl" minOccurs="0" maxOccurs="1" />
+        <xs:element ref="queryControl" minOccurs="0" maxOccurs="1" />
       </xs:all>
 
       <xs:attribute name="defaultColumnWidth" type="xs:nonNegativeInteger" default="20"/>
@@ -410,6 +431,8 @@
       </xs:attribute>
     </xs:complexType>
   </xs:element>
+
+  <xs:element name="description" type="xs:string" />
 
   <xs:simpleType name="upcase-uuid">
     <xs:restriction base="xs:string">
