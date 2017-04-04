@@ -12,7 +12,7 @@ namespace IndexerSetup.RegisterProperties
         {
             session.Log("Registering property description file...");
 
-            string propdescPath = Path.Combine(session.GetTargetPath("INSTALLDIR"), "WordPerfectIndexer.propdesc");
+            string propdescPath = Path.Combine(session.GetTargetPath("INSTALLFOLDER"), "WordPerfectIndexer.propdesc");
             bool registerSucceeded = PSRegisterPropertySchema(propdescPath);
 
             if (registerSucceeded) return ActionResult.Success;
