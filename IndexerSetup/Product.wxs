@@ -65,7 +65,6 @@
     </Component>
 
     <CustomAction Id="RegisterPropdesc" BinaryKey="RegisterPropdescExtension" DllEntry="RegisterPropDescFile" Execute="immediate" Return="check" />
-    <CustomAction Id="UnregisterPropdesc" BinaryKey="RegisterPropdescExtension" DllEntry="UnregisterPropDescFile" Execute="immediate" Return="check" />
     <Binary Id="RegisterPropedescExtension" SourceFile="$(var.IndexerSetup.RegisterProperties.TargetPath)" />
 
     <InstallExecuteSequence>
