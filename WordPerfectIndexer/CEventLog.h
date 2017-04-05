@@ -30,11 +30,4 @@ public:
 	{
 		return ::ReportEvent(hEventLog, type, category, eventId, nullptr, stringCount, 0, insertStrings, nullptr);
 	}
-
-	template<WORD Count>
-	BOOL ReportEvent(WORD type, WORD category, DWORD eventId, LPCTSTR insertStrings[Count])
-	{
-		return this->ReportEvent(type, category, eventId, insertStrings, Count);
-		wcscpy_s
-	}
 };
