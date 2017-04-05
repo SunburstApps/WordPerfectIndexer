@@ -64,7 +64,9 @@ Severity=Error
 Facility=Filter
 SymbolicName=MSG_WPD_DOC_CORRUPT
 Language=English
-Could not read parse WordPerfect document at path %1!s!
+Could not parse WordPerfect document at path %1!s!
+
+The file has not been deleted.
 .
 
 MessageId=0x105
