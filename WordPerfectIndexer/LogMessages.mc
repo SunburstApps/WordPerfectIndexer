@@ -57,6 +57,8 @@ Facility=Filter
 SymbolicName=MSG_STREAM_READ_ERROR
 Language=English
 Could not read from stream (HRESULT %1)
+
+Temporary file %2!s! has not been deleted.
 .
 
 MessageId=0x104

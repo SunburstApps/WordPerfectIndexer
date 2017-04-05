@@ -84,6 +84,8 @@
 // MessageText:
 //
 // Could not read from stream (HRESULT %1)
+// 
+// Temporary file %2!s! has not been deleted.
 //
 #define MSG_STREAM_READ_ERROR            ((DWORD)0xC0000103L)
 
