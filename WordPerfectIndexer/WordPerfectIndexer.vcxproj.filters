@@ -70,16 +70,16 @@
     <None Include="WordPerfectIndexer.def">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="WordPerfectIndexer.propdesc" />
+    <None Include="PropertyDescriptionSchema.xsd">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="WordPerfectIndexer.propdesc">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="WordPerfectIndexer.idl">
       <Filter>Source Files</Filter>
     </Midl>
-  </ItemGroup>
-  <ItemGroup>
-    <Xsd Include="PropertyDescriptionSchema.xsd">
-      <Filter>Header Files</Filter>
-    </Xsd>
   </ItemGroup>
 </Project>
