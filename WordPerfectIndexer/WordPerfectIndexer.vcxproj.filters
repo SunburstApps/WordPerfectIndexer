@@ -76,6 +76,9 @@
     <None Include="WordPerfectIndexer.propdesc">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="WordPerfectIndexer.mc">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="WordPerfectIndexer.idl">

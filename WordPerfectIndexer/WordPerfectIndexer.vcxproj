@@ -269,6 +269,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="WordPerfectIndexer.def" />
+    <CustomBuild Include="LogMessages.mc">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">mc -U -r "$(IntDir)." "%(FullPath)" &amp;&amp; rc "$(IntDir)LogMessages.rc"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compiling log message definitions</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)LogMessages.res</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">mc -U -r "$(IntDir)." "%(FullPath)" &amp;&amp; rc "$(IntDir)LogMessages.rc"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Compiling log message definitions</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)LogMessages.res</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">mc -U -r "$(IntDir)." "%(FullPath)" &amp;&amp; rc "$(IntDir)LogMessages.rc"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compiling log message definitions</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)LogMessages.res</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">mc -U -r "$(IntDir)." "%(FullPath)" &amp;&amp; rc "$(IntDir)LogMessages.rc"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compiling log message definitions</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)LogMessages.res</Outputs>
+    </CustomBuild>
     <None Include="WordPerfectIndexer.propdesc" />
     <None Include="WordPerfectIndexer.rgs" />
   </ItemGroup>
