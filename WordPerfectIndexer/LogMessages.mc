@@ -20,12 +20,6 @@ MessageIdTypedef=WORD
 MessageId=0x1
 SymbolicName=TEXT_EXTRACTION_CATEGORY
 Language=English
-Text extraction using libwpd
-.
-
-MessageId=0x2
-SymbolicName=CHUNK_CATEGORY
-Language=English
 Report metadata to Windows
 .
 

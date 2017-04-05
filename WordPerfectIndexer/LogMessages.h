@@ -46,18 +46,9 @@
 //
 // MessageText:
 //
-// Text extraction using libwpd
-//
-#define TEXT_EXTRACTION_CATEGORY         ((WORD)0x00000001L)
-
-//
-// MessageId: CHUNK_CATEGORY
-//
-// MessageText:
-//
 // Report metadata to Windows
 //
-#define CHUNK_CATEGORY                   ((WORD)0x00000002L)
+#define TEXT_EXTRACTION_CATEGORY         ((WORD)0x00000001L)
 
 // Begin event definition section.
 //
