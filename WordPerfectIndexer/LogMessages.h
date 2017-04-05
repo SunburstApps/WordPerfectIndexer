@@ -92,7 +92,9 @@
 //
 // MessageText:
 //
-// Could not read parse WordPerfect document at path %1!s!
+// Could not parse WordPerfect document at path %1!s!
+// 
+// The file has not been deleted.
 //
 #define MSG_WPD_DOC_CORRUPT              ((DWORD)0xC0000104L)
 
@@ -113,4 +115,13 @@
 // WordPerfect document import completed successfully
 //
 #define MSG_END_IMPORT                   ((DWORD)0x40000106L)
+
+//
+// MessageId: MSG_DELETE_TEMP_FILE
+//
+// MessageText:
+//
+// Deleted temporary file %1!s!
+//
+#define MSG_DELETE_TEMP_FILE             ((DWORD)0x40000107L)
 

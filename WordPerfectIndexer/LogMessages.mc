@@ -83,3 +83,11 @@ SymbolicName=MSG_END_IMPORT
 Language=English
 WordPerfect document import completed successfully
 .
+
+MessageId=0x107
+Severity=Informational
+Facility=Filter
+SymbolicName=MSG_DELETE_TEMP_FILE
+Language=English
+Deleted temporary file %1!s!
+.
