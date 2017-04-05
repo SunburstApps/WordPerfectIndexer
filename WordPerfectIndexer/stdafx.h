@@ -23,4 +23,4 @@
 #include "resource.h"
 #include <atlbase.h>
 #include <atlcom.h>
-#include <atlctl.h>
+#include <atlstr.h>
