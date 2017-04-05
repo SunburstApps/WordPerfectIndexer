@@ -256,6 +256,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CEventLog.h" />
     <ClInclude Include="CWordPerfectFilter.h" />
     <ClInclude Include="dllmain.h" />
     <ClInclude Include="FilterBase.h" />
