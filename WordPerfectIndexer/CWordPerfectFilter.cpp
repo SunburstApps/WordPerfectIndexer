@@ -4,8 +4,10 @@
 #include <librevenge-generators/librevenge-generators.h>
 #include <librevenge-stream/librevenge-stream.h>
 #include <libwpd/libwpd.h>
+#include <cassert>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 namespace /* anonymous */
 {
@@ -17,6 +19,18 @@ namespace /* anonymous */
 		PWSTR wide = (PWSTR)malloc(widelen * sizeof(wchar_t));
 		MultiByteToWideChar(CP_ACP, 0, ascii, asciilen, wide, widelen);
 		return wide;
+	}
+
+	bool ParseGUID(GUID& guid, LPCWSTR string)
+	{
+		const int expected_fields = 11;
+#pragma warning(suppress: 4996) // Don't warn about CRT security deprecations
+		int num_fields_parsed = swscanf(string, L"%08X-%04hX-%04hX-%02hhX%02hhX-%02hhX%02hhX%02hhX%02hhX%02hhX%02hhX",
+			&guid.Data1, &guid.Data2, &guid.Data3,
+			&guid.Data4[0], &guid.Data4[1], &guid.Data4[2], &guid.Data4[3],
+			&guid.Data4[4], &guid.Data4[5], &guid.Data4[6], &guid.Data4[7]);
+
+		return num_fields_parsed == expected_fields;
 	}
 }
 
@@ -90,8 +104,12 @@ HRESULT CWordPerfectFilter::OnInit()
 
 HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& chunkValue)
 {
-	const GUID WordPerfectFilterGuid = { 0x64F0A51B, 0xF686, 0x4EC2, 0xBE, 0xBC, 0x65, 0x4C, 0x17, 0x4E, 0x6E, 0x73 };
-	PROPERTYKEY BodyTextPropKey = { WordPerfectFilterGuid, 100 };
+	PROPERTYKEY BodyTextPropKey;
+	ZeroMemory(&BodyTextPropKey, sizeof(BodyTextPropKey));
+	BodyTextPropKey.pid = 100;
+
+	bool formatOK = ParseGUID(BodyTextPropKey.fmtid, L"64F0A51B-F6B6-4EC2-BE8C-654C174E6E73");
+	assert(formatOK && "Invalid GUID");
 
 	PWSTR BodyText = StrDupA2W(priv->BodyText.cstr());
 
