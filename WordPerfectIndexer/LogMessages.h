@@ -52,53 +52,13 @@
 
 // Begin event definition section.
 //
-// MessageId: MSG_GETTEMPPATH_FAILED
-//
-// MessageText:
-//
-// GetTempPath() call failed (error %1)
-//
-#define MSG_GETTEMPPATH_FAILED           ((DWORD)0xC0000100L)
-
-//
-// MessageId: MSG_GETTEMPFILENAME_FAILED
-//
-// MessageText:
-//
-// GetTempFileName() call failed (error %1)
-//
-#define MSG_GETTEMPFILENAME_FAILED       ((DWORD)0xC0000101L)
-
-//
-// MessageId: MSG_FOPEN_FAILED
-//
-// MessageText:
-//
-// Could not open file %1!s! (errno %2)
-//
-#define MSG_FOPEN_FAILED                 ((DWORD)0xC0000102L)
-
-//
-// MessageId: MSG_STREAM_READ_ERROR
-//
-// MessageText:
-//
-// Could not read from stream (HRESULT %1)
-// 
-// Temporary file %2!s! has not been deleted.
-//
-#define MSG_STREAM_READ_ERROR            ((DWORD)0xC0000103L)
-
-//
 // MessageId: MSG_WPD_DOC_CORRUPT
 //
 // MessageText:
 //
-// Could not parse WordPerfect document at path %1!s!
-// 
-// The file has not been deleted.
+// Could not parse WordPerfect document
 //
-#define MSG_WPD_DOC_CORRUPT              ((DWORD)0xC0000104L)
+#define MSG_WPD_DOC_CORRUPT              ((DWORD)0xC0000100L)
 
 //
 // MessageId: MSG_BEGIN_IMPORT
@@ -107,7 +67,7 @@
 //
 // Beginning import of WordPerfect document
 //
-#define MSG_BEGIN_IMPORT                 ((DWORD)0x40000105L)
+#define MSG_BEGIN_IMPORT                 ((DWORD)0x40000101L)
 
 //
 // MessageId: MSG_END_IMPORT
@@ -116,14 +76,5 @@
 //
 // WordPerfect document import completed successfully
 //
-#define MSG_END_IMPORT                   ((DWORD)0x40000106L)
-
-//
-// MessageId: MSG_DELETE_TEMP_FILE
-//
-// MessageText:
-//
-// Deleted temporary file %1!s!
-//
-#define MSG_DELETE_TEMP_FILE             ((DWORD)0x40000107L)
+#define MSG_END_IMPORT                   ((DWORD)0x40000102L)
 

@@ -34,12 +34,21 @@ namespace /* anonymous */
 
 		return num_fields_parsed == expected_fields;
 	}
+
+	size_t GetIStreamLength(IStream *ComStream)
+	{
+		STATSTG stg;
+		ZeroMemory(&stg, sizeof(stg));
+
+		HRESULT hr = ComStream->Stat(&stg, STATFLAG_NONAME);
+		assert(hr == S_OK && "IStream::Stat failed");
+		return stg.cbSize.QuadPart;
+	}
 }
 
 class CWordPerfectFilter::Private
 {
 public:
-	char TempFilePath[MAX_PATH + 1];
 	librevenge::RVNGTextTextGenerator *Generator;
 	librevenge::RVNGString BodyText;
 	bool CanParse = true;
@@ -53,68 +62,16 @@ HRESULT CWordPerfectFilter::OnInit()
 	priv = new CWordPerfectFilter::Private;
 	priv->Generator = new librevenge::RVNGTextTextGenerator(priv->BodyText);
 
-	char TempPath[MAX_PATH + 1];
-	if (GetTempPathA(MAX_PATH + 1, TempPath) == 0) {
-		CString ErrorCode; ErrorCode.Format(L"%ld", GetLastError());
-		CAtlArray<CString> Inserts; Inserts.Add(ErrorCode);
+	size_t StreamLength = GetIStreamLength(m_pStream);
+	unsigned char *Buffer = (unsigned char *)malloc(StreamLength * sizeof(unsigned char));
+	HRESULT hr = m_pStream->Read(Buffer, StreamLength * sizeof(unsigned char), nullptr);
 
-		priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_GETTEMPPATH_FAILED, Inserts);
-		return E_UNEXPECTED;
-	}
-
-	if (GetTempFileNameA(TempPath, "PFF", 0, priv->TempFilePath) == 0)
-	{
-		CString ErrorCode; ErrorCode.Format(L"%ld", GetLastError());
-		CAtlArray<CString> Inserts; Inserts.Add(ErrorCode);
-
-		priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_GETTEMPFILENAME_FAILED, Inserts);
-		return E_UNEXPECTED;
-	}
-
-	FILE *TempFile = fopen(TempPath, "w");
-	if (TempFile == nullptr) {
-		CString FilePath(priv->TempFilePath);
-		CString ErrnoString; ErrnoString.Format(L"%d", errno);
-		CAtlArray<CString> Inserts;
-		Inserts.Add(FilePath);
-		Inserts.Add(ErrnoString);
-
-		priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_FOPEN_FAILED, Inserts);
-		return E_UNEXPECTED;
-	}
-
-	const ULONG BufferSize = 4096;
-	ULONG BytesRead = BufferSize;
-	BYTE ReadBuffer[BufferSize];
-
-	HRESULT hr;
-	do
-	{
-		hr = m_pStream->Read(ReadBuffer, BufferSize, &BytesRead);
-		fwrite(ReadBuffer, 1, BytesRead, TempFile);
-	} while (hr == S_OK);
-
-	fclose(TempFile);
-	if (hr != S_FALSE)
-	{
-		// S_FALSE is returned on end-of-stream.
-		// S_OK is returned when there is more data.
-		// Any other HRESULT is an error.
-
-		CString hrStr; hrStr.Format(L"0x%08X", hr);
-		CAtlArray<CString> Inserts; Inserts.Add(hrStr); Inserts.Add(CString(priv->TempFilePath));
-		priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_STREAM_READ_ERROR, Inserts);
-
-		return hr;
-	}
-
-	librevenge::RVNGFileStream RevengeStream(priv->TempFilePath);
+	librevenge::RVNGStringStream RevengeStream(Buffer, StreamLength * sizeof(unsigned char));
 	libwpd::WPDResult wpdError = libwpd::WPDocument::parse(&RevengeStream, priv->Generator, nullptr);
 
 	if (wpdError != libwpd::WPD_OK)
 	{
-		CAtlArray<CString> Inserts; Inserts.Add(CString(priv->TempFilePath));
-		priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_WPD_DOC_CORRUPT, Inserts);
+		priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_WPD_DOC_CORRUPT);
 
 		switch (wpdError)
 		{
@@ -130,10 +87,7 @@ HRESULT CWordPerfectFilter::OnInit()
 		}
 	}
 
-	DeleteFileA(priv->TempFilePath);
-	CAtlArray<CString> Inserts; Inserts.Add(CString(priv->TempFilePath));
-	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_DELETE_TEMP_FILE, Inserts);
-
+	free(Buffer);
 	return S_OK;
 }
 
