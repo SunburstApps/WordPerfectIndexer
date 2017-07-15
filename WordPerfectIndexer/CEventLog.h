@@ -14,12 +14,11 @@ public:
 	CEventLog(LPTSTR ProviderName)
 	{
 		hEventLog = RegisterEventSource(nullptr, ProviderName);
-		assert(hEventLog != nullptr && "RegisterEventSource failed");
 	}
 
 	~CEventLog()
 	{
-		DeregisterEventSource(hEventLog);
+		if (hEventLog != nullptr) DeregisterEventSource(hEventLog);
 	}
 
 	BOOL ReportEvent(WORD type, WORD category, DWORD eventId)
@@ -29,6 +28,7 @@ public:
 
 	BOOL ReportEvent(WORD type, WORD category, DWORD eventId, LPCTSTR insertStrings[], WORD stringCount)
 	{
+		if (hEventLog == nullptr) return false;
 		return ::ReportEvent(hEventLog, type, category, eventId, nullptr, stringCount, 0, insertStrings, nullptr);
 	}
 
