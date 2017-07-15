@@ -22,12 +22,12 @@ public:
 
 HRESULT CWordPerfectFilter::OnInit()
 {
-	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_BEGIN_IMPORT);
-
 	librevenge::RVNGString BodyTextRVNG;
 	if (priv == nullptr) priv = new CWordPerfectFilter::Private;
 	if (priv->Generator != nullptr) delete priv->Generator;
 	priv->Generator = new librevenge::RVNGTextTextGenerator(BodyTextRVNG);
+
+	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_BEGIN_IMPORT);
 
 	STATSTG statStg;
 	ZeroMemory(&statStg, sizeof(statStg));
