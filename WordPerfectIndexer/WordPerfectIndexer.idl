@@ -4,14 +4,9 @@
 import "oaidl.idl";
 import "ocidl.idl";
 
-[
-	object,
-	uuid(2E19B65E-2A08-4CF2-95CD-F84F4AEB6EB4),
-	pointer_default(unique)
-]
-interface IWordPerfectFilter : IUnknown
-{
-};
+import "shobjidl.idl";
+import "thumbcache.idl";
+import "filter.idl";
 
 [
 	uuid(FAABE005-73E7-4015-895D-B9B1E30BF26A),
@@ -24,10 +19,7 @@ library WordPerfectIndexerLib
 	[uuid(F4EF307D-BCFC-4DC5-821D-31B77E0A5011)]
 	coclass WordPerfectFilter
 	{
-		[default] interface IWordPerfectFilter;
+		[default] interface IFilter;
 	};
 };
 
-import "shobjidl.idl";
-import "thumbcache.idl";
-import "filter.idl";
