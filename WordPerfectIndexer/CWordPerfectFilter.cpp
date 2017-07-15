@@ -18,6 +18,7 @@ public:
 	CEventLog EventLog = CEventLog(_T("WordPerfect Indexer"));
 	size_t LastOffset = 0;
 	CString BodyText;
+	bool SentCharacterCount;
 };
 
 HRESULT CWordPerfectFilter::OnInit()
@@ -67,6 +68,7 @@ HRESULT CWordPerfectFilter::OnInit()
 	}
 
 	priv->BodyText = CA2W(BodyTextRVNG.cstr(), CP_UTF8);
+	priv->SentCharacterCount = false;
 	priv->LastOffset = 0;
 	free(Buffer);
 
@@ -75,6 +77,13 @@ HRESULT CWordPerfectFilter::OnInit()
 
 HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& chunkValue)
 {
+	if (!priv->SentCharacterCount)
+	{
+		chunkValue.SetIntValue(PKEY_Document_CharacterCount, priv->BodyText.GetLength());
+		priv->SentCharacterCount = true;
+		return S_OK;
+	}
+
 	constexpr size_t DefaultChunkLength = 10240;
 	size_t ChunkLength = DefaultChunkLength;
 
