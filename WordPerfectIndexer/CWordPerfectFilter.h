@@ -19,9 +19,6 @@ private:
 	Private *priv;
 
 public:
-	CWordPerfectFilter() {}
-	virtual ~CWordPerfectFilter();
-
 	DECLARE_REGISTRY_RESOURCEID(IDR_WORDPERFECTINDEXER)
 	DECLARE_NOT_AGGREGATABLE(CWordPerfectFilter)
 	DECLARE_PROTECT_FINAL_CONSTRUCT()
@@ -36,9 +33,7 @@ public:
 		return S_OK;
 	}
 
-	void FinalRelease()
-	{
-	}
+	void FinalRelease();
 
 	IFACEMETHODIMP GetClassID(CLSID* pClassID)
 	{

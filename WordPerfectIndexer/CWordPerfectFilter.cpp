@@ -124,7 +124,7 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& chunkValue)
 	}
 }
 
-CWordPerfectFilter::~CWordPerfectFilter()
+void CWordPerfectFilter::FinalRelease()
 {
 	if (priv != nullptr)
 	{
