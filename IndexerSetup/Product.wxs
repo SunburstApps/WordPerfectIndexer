@@ -12,6 +12,9 @@
     </Feature>
 
     <Property Id="ARPNOMODIFY" Value="1" />
+    <Property Id="ARPNOREPAIR" Value="1" />
+    <Property Id="ARPSIZE" Value="8759" />
+    <Property Id="COMPANYNAME" Value="Sunburst Solutions" />
   </Product>
 
   <Fragment>
