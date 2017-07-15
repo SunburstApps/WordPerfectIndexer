@@ -6,7 +6,6 @@
 #include <librevenge-generators/librevenge-generators.h>
 #include <librevenge-stream/librevenge-stream.h>
 #include <libwpd/libwpd.h>
-#include <cassert>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -34,16 +33,6 @@ namespace /* anonymous */
 
 		return num_fields_parsed == expected_fields;
 	}
-
-	size_t GetIStreamLength(IStream *ComStream)
-	{
-		STATSTG stg;
-		ZeroMemory(&stg, sizeof(stg));
-
-		HRESULT hr = ComStream->Stat(&stg, STATFLAG_NONAME);
-		assert(hr == S_OK && "IStream::Stat failed");
-		return stg.cbSize.QuadPart;
-	}
 }
 
 class CWordPerfectFilter::Private
@@ -62,9 +51,21 @@ HRESULT CWordPerfectFilter::OnInit()
 	priv = new CWordPerfectFilter::Private;
 	priv->Generator = new librevenge::RVNGTextTextGenerator(priv->BodyText);
 
-	size_t StreamLength = GetIStreamLength(m_pStream);
+	STATSTG statStg;
+	ZeroMemory(&statStg, sizeof(statStg));
+	HRESULT hr = m_pStream->Stat(&statStg, STATFLAG_NONAME);
+	if (hr != S_OK)
+	{
+		CString str; str.Format(L"0x%08llX", hr);
+		CAtlArray<CString> args; args.Add(str);
+
+		priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_GETISTREAMLENGTH_FAILURE, args);
+		return E_UNEXPECTED;
+	}
+
+	size_t StreamLength = statStg.cbSize.QuadPart;
 	unsigned char *Buffer = (unsigned char *)malloc(StreamLength * sizeof(unsigned char));
-	HRESULT hr = m_pStream->Read(Buffer, StreamLength * sizeof(unsigned char), nullptr);
+	hr = m_pStream->Read(Buffer, StreamLength * sizeof(unsigned char), nullptr);
 
 	librevenge::RVNGStringStream RevengeStream(Buffer, StreamLength * sizeof(unsigned char));
 	libwpd::WPDResult wpdError = libwpd::WPDocument::parse(&RevengeStream, priv->Generator, nullptr);

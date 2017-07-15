@@ -78,3 +78,12 @@
 //
 #define MSG_END_IMPORT                   ((DWORD)0x40000102L)
 
+//
+// MessageId: MSG_GETISTREAMLENGTH_FAILURE
+//
+// MessageText:
+//
+// Could not get the length of the IStream (error %1)
+//
+#define MSG_GETISTREAMLENGTH_FAILURE     ((DWORD)0xC0000103L)
+

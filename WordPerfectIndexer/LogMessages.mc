@@ -49,3 +49,10 @@ SymbolicName=MSG_END_IMPORT
 Language=English
 WordPerfect document import completed successfully
 .
+
+MessageId=0x103
+Severity=Error
+SymbolicName=MSG_GETISTREAMLENGTH_FAILURE
+Language=English
+Could not get the length of the IStream (error %1)
+.
