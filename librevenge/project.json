@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "boost-vc140": "1.63.0"
-  },
-
-  "frameworks": {
-    "native": {}
-  }
-}

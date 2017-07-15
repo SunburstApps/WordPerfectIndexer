@@ -89,9 +89,6 @@
     <ClCompile Include="src\RVNGTextTextGenerator.cpp" />
     <ClCompile Include="src\RVNGZipStream.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="project.json" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{333855BF-0205-470A-97B1-518CD9DF8F78}</ProjectGuid>
