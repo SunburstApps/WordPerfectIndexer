@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "librevenge", "librevenge\librevenge.vcxproj", "{333855BF-0205-470A-97B1-518CD9DF8F78}"
 EndProject
@@ -12,8 +12,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wpd2text", "wpd2text\wpd2text.vcxproj", "{36C01A36-2BFB-4A14-AF22-8558D0A9F39A}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "IndexerSetup", "IndexerSetup\IndexerSetup.wixproj", "{D512E053-E49E-4ED3-BAE2-C943CFB20F26}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexerSetup.RegisterProperties", "IndexerSetup.RegisterProperties\IndexerSetup.RegisterProperties.csproj", "{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,20 +103,6 @@ Global
 		{D512E053-E49E-4ED3-BAE2-C943CFB20F26}.Release|x64.ActiveCfg = Release|x86
 		{D512E053-E49E-4ED3-BAE2-C943CFB20F26}.Release|x86.ActiveCfg = Release|x86
 		{D512E053-E49E-4ED3-BAE2-C943CFB20F26}.Release|x86.Build.0 = Release|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.CodeAnalysisDebug|Any CPU.ActiveCfg = Release|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.CodeAnalysisDebug|Any CPU.Build.0 = Release|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.CodeAnalysisDebug|x64.ActiveCfg = Release|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.CodeAnalysisDebug|x64.Build.0 = Release|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.CodeAnalysisDebug|x86.ActiveCfg = Debug|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.CodeAnalysisDebug|x86.Build.0 = Debug|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.Debug|x64.ActiveCfg = Debug|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.Debug|x86.ActiveCfg = Debug|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.Debug|x86.Build.0 = Debug|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.Release|Any CPU.ActiveCfg = Release|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.Release|x64.ActiveCfg = Release|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.Release|x86.ActiveCfg = Release|x86
-		{6AE38D5D-4E03-4970-A4BE-7AFC401A02C5}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -76,9 +76,6 @@
     <None Include="PropertyDescriptionSchema.xsd">
       <Filter>Header Files</Filter>
     </None>
-    <None Include="WordPerfectIndexer.propdesc">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="WordPerfectIndexer.idl">
