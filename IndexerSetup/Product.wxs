@@ -42,11 +42,11 @@
         <RegistryValue Root="HKCR" Key="CLSID\{D1A975AB-725A-4804-ADC1-4BC3DB60621C}\PersistentAddinsRegistered" Value="" Type="string" Action="write" />
         <RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers\.wpd" Value="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Type="string" Action="write" />
 
-        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfectIndexer" Name="CategoryCount" Value="3" Type="integer" Action="write" />
-        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfectIndexer" Name="CategoryMessageFile" Value="[INSTALLFOLDER]WordPerfectIndexer.dll" Type="string" Action="write" />
-        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfectIndexer" Name="EventMessageFile" Value="[INSTALLFOLDER]WordPerfectIndexer.dll" Type="string" Action="write" />
-        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfectIndexer" Name="ParameterMessageFile" Value="[INSTALLFOLDER]WordPerfectIndexer.dll" Type="string" Action="write" />
-        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfectIndexer" Name="TypesSupported" Value="7" Type="integer" Action="write" />
+        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfect Indexer" Name="CategoryCount" Value="3" Type="integer" Action="write" />
+        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfect Indexer" Name="CategoryMessageFile" Value="[INSTALLFOLDER]WordPerfectIndexer.dll" Type="string" Action="write" />
+        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfect Indexer" Name="EventMessageFile" Value="[INSTALLFOLDER]WordPerfectIndexer.dll" Type="string" Action="write" />
+        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfect Indexer" Name="ParameterMessageFile" Value="[INSTALLFOLDER]WordPerfectIndexer.dll" Type="string" Action="write" />
+        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfect Indexer" Name="TypesSupported" Value="7" Type="integer" Action="write" />
       </Component>
     </DirectoryRef>
   </Fragment>
