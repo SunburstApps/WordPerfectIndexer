@@ -39,17 +39,19 @@ class CWordPerfectFilter::Private
 {
 public:
 	librevenge::RVNGTextTextGenerator *Generator;
-	librevenge::RVNGString BodyText;
 	bool CanParse = true;
 	CEventLog EventLog = CEventLog(_T("WordPerfect Indexer"));
+	size_t LastOffset = 0;
+	CString BodyText;
 };
 
 HRESULT CWordPerfectFilter::OnInit()
 {
 	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_BEGIN_IMPORT);
 
+	librevenge::RVNGString BodyTextRVNG;
 	priv = new CWordPerfectFilter::Private;
-	priv->Generator = new librevenge::RVNGTextTextGenerator(priv->BodyText);
+	priv->Generator = new librevenge::RVNGTextTextGenerator(BodyTextRVNG);
 
 	STATSTG statStg;
 	ZeroMemory(&statStg, sizeof(statStg));
@@ -88,27 +90,38 @@ HRESULT CWordPerfectFilter::OnInit()
 		}
 	}
 
+	priv->BodyText = CA2W(BodyTextRVNG.cstr(), CP_UTF8);
+	priv->LastOffset = 0;
 	free(Buffer);
+
 	return S_OK;
 }
 
 HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& chunkValue)
 {
-	PWSTR BodyText = StrDupA2W(priv->BodyText.cstr());
+	constexpr size_t DefaultChunkLength = 10240;
+	size_t ChunkLength = DefaultChunkLength;
+	bool isLastChunk = false;
 
-	const size_t MaxColumnLength = 1048576;
-	WCHAR TruncatedBodyText[MaxColumnLength / sizeof(WCHAR)];
-	if (wcslen(BodyText) > MaxColumnLength)
+	if ((priv->LastOffset + ChunkLength) > priv->BodyText.GetLength())
 	{
-		wcsncpy_s(TruncatedBodyText, BodyText, MaxColumnLength - 3);
-		wcsncat_s(TruncatedBodyText, L"...", 3);
+		ChunkLength = priv->BodyText.GetLength() - priv->LastOffset;
+		isLastChunk = true;
 	}
 
-	chunkValue.SetTextValue(PKEY_Search_Contents, TruncatedBodyText, CHUNK_TEXT);
-	free((void *)BodyText);
+	CString Chunk = priv->BodyText.Mid(priv->LastOffset, ChunkLength);
+	chunkValue.SetTextValue(PKEY_Search_Contents, Chunk, CHUNK_TEXT);
+	priv->LastOffset += ChunkLength;
 
-	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_END_IMPORT);
-	return FILTER_E_END_OF_CHUNKS;
+	if (isLastChunk)
+	{
+		priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_END_IMPORT);
+		return FILTER_E_END_OF_CHUNKS;
+	}
+	else
+	{
+		return S_OK;
+	}
 }
 
 CWordPerfectFilter::~CWordPerfectFilter()
