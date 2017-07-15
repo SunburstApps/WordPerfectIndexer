@@ -93,13 +93,6 @@ HRESULT CWordPerfectFilter::OnInit()
 
 HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& chunkValue)
 {
-	PROPERTYKEY BodyTextPropKey;
-	ZeroMemory(&BodyTextPropKey, sizeof(BodyTextPropKey));
-	BodyTextPropKey.pid = 100;
-
-	bool formatOK = ParseGUID(BodyTextPropKey.fmtid, L"64F0A51B-F6B6-4EC2-BE8C-654C174E6E73");
-	assert(formatOK && "Invalid GUID");
-
 	PWSTR BodyText = StrDupA2W(priv->BodyText.cstr());
 
 	const size_t MaxColumnLength = 1048576;
@@ -110,7 +103,7 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& chunkValue)
 		wcsncat_s(TruncatedBodyText, L"...", 3);
 	}
 
-	chunkValue.SetTextValue(BodyTextPropKey, TruncatedBodyText);
+	chunkValue.SetTextValue(PKEY_Search_Contents, TruncatedBodyText, CHUNK_TEXT);
 	free((void *)BodyText);
 
 	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_END_IMPORT);
