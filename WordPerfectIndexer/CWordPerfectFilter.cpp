@@ -100,6 +100,12 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& chunkValue)
 	}
 }
 
+HRESULT CWordPerfectFilter::FinalConstruct()
+{
+	this->priv = nullptr;
+	return S_OK;
+}
+
 void CWordPerfectFilter::FinalRelease()
 {
 	if (priv != nullptr)

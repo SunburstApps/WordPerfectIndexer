@@ -28,11 +28,7 @@ public:
 		COM_INTERFACE_ENTRY(IFilter)
 	END_COM_MAP()
 
-	HRESULT FinalConstruct()
-	{
-		return S_OK;
-	}
-
+	HRESULT FinalConstruct();
 	void FinalRelease();
 
 	IFACEMETHODIMP GetClassID(CLSID* pClassID)
