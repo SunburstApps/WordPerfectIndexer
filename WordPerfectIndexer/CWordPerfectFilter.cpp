@@ -77,17 +77,22 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& chunkValue)
 {
 	constexpr size_t DefaultChunkLength = 10240;
 	size_t ChunkLength = DefaultChunkLength;
+
+	CString Chunk = priv->BodyText.Mid(priv->LastOffset);
 	bool isLastChunk = false;
 
-	if ((priv->LastOffset + ChunkLength) > priv->BodyText.GetLength())
+	if (Chunk.GetLength() <= ChunkLength)
 	{
-		ChunkLength = priv->BodyText.GetLength() - priv->LastOffset;
+		ChunkLength = Chunk.GetLength();
 		isLastChunk = true;
 	}
+	else
+	{
+		Chunk = Chunk.Left(ChunkLength);
+		priv->LastOffset += ChunkLength;
+	}
 
-	CString Chunk = priv->BodyText.Mid(priv->LastOffset, ChunkLength);
 	chunkValue.SetTextValue(PKEY_Search_Contents, Chunk, CHUNK_TEXT);
-	priv->LastOffset += ChunkLength;
 
 	if (isLastChunk)
 	{
