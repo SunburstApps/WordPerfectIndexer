@@ -30,6 +30,7 @@
         <File Id="libwpd.dll" Name="libwpd.dll" Source="$(var.SolutionDir)\Release\libwpd.dll" />
         <File Id="wpd2text.exe" Name="wpd2text.exe" Source="$(var.SolutionDir)\Release\wpd2text.exe" />
         <File Id="zlib.dll" Name="zlib1.dll" Source="$(var.SolutionDir)\Release\zlib1.dll" />
+        <File Id="BoostSystem.dll" Name="boost_system-vc141-mt-1_64.dll" Source="$(var.SolutionDir)\Release\boost_system-vc141-mt-1_64.dll" />
         <File Id="WordPerfectIndexer.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="$(var.SolutionDir)\Release\WordPerfectIndexer.dll">
           <TypeLib Id="{FAABE005-73E7-4015-895D-B9B1E30BF26A}" Description="WordPerfect Indexer Type Library" Language="0" MajorVersion="1" MinorVersion="0">
             <Class Id="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Context="InprocServer32" Description="WordPerfect Filter" ThreadingModel="both" Version="1.0" />
@@ -60,6 +61,7 @@
       <File Id="libwpd64.dll" Name="libwpd.dll" Source="$(var.SolutionDir)\x64\Release\libwpd.dll" />
       <File Id="wpd2text64.exe" Name="wpd2text.exe" Source="$(var.SolutionDir)\x64\Release\wpd2text.exe" />
       <File Id="zlib64.dll" Name="zlib1.dll" Source="$(var.SolutionDir)\x64\Release\zlib1.dll" />
+      <File Id="BoostSystem64.dll" Name="boost_system-vc141-mt-1_64.dll" Source="$(var.SolutionDir)\x64\Release\boost_system-vc141-mt-1_64.dll" />
 
       <File Id="WordPerfectIndexer64.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="$(var.SolutionDir)\Release\WordPerfectIndexer.dll">
         <TypeLib Id="{FAABE005-73E7-4015-895D-B9B1E30BF26A}" Description="WordPerfect Indexer Type Library" Language="0" MajorVersion="1" MinorVersion="0">
