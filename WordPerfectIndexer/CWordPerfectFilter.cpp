@@ -104,7 +104,7 @@ void CWordPerfectFilter::FinalRelease()
 {
 	if (priv != nullptr)
 	{
-		delete priv->Generator;
+		if (priv->Generator != nullptr) delete priv->Generator;
 		delete priv;
 	}
 }
