@@ -19,7 +19,9 @@ library WordPerfectIndexerLib
 	[uuid(F4EF307D-BCFC-4DC5-821D-31B77E0A5011)]
 	coclass WordPerfectFilter
 	{
-		[default] interface IFilter;
+		[default] interface IPropertyStore;
+		interface IPropertyStoreCapabilities;
+		interface IInitializeWithStream;
 	};
 };
 
