@@ -28,7 +28,8 @@ class CWordPerfectFilter::Private
 public:
 	CWordPerfectFilter::Private() :
 		Generator(nullptr),
-		EventLog(_T("WordPerfect Indexer"))
+		EventLog(_T("WordPerfect Indexer")),
+		CurrentChunkId(0)
 	{}
 
 	CComPtr<IPropertyStoreCache> Cache;
@@ -36,7 +37,6 @@ public:
 	CEventLog EventLog;
 
 	DWORD CurrentChunkId;
-	size_t TextChunkIndex;
 };
 
 HRESULT CWordPerfectFilter::Initialize(IStream *raw_stream, DWORD)
