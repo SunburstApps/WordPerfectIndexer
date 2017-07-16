@@ -162,7 +162,7 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& value)
 		HRESULT hr = this->GetValue(PKEY_Search_Contents, &pVar);
 		if (FAILED(hr)) return E_UNEXPECTED;
 
-		hr = value.SetTextValue(PKEY_Search_Contents, pVar.pwszVal);
+		hr = value.SetTextValue(PKEY_Search_Contents, pVar.pwszVal, CHUNK_TEXT);
 		PropVariantClear(&pVar);
 
 		priv->CurrentChunkId++;
