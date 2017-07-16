@@ -347,13 +347,10 @@ inline HRESULT CChunkValue::SetChunk(REFPROPERTYKEY pkey,
 //  - Create a COM Object derived from CFilterBase
 //  - Then add IFilter, IInitializeWithStream to your COM map
 //  - Implement the methods OnInit and GetNextChunkValue
-class CFilterBase : public IFilter, public IInitializeWithStream
+class CFilterBase : public IFilter
 {
 public:
 	// pure virtual functions for derived classes to implement
-
-	// OnInit() is called after the IStream is valid
-	virtual HRESULT OnInit() = 0;
 
 	// When GetNextChunkValue() is called you should fill in the ChunkValue by calling SetXXXValue() with the property.
 	// example:  chunkValue.SetTextValue(PKYE_ItemName,L"blah de blah");
@@ -365,17 +362,8 @@ protected:
 	inline DWORD GetChunkId() const { return m_dwChunkId; }
 
 public:
-	CFilterBase() : m_dwChunkId(0), m_iText(0), m_pStream(NULL)
-	{
-	}
-
-	virtual ~CFilterBase()
-	{
-		if (m_pStream)
-		{
-			m_pStream->Release();
-		}
-	}
+	CFilterBase() : m_dwChunkId(0), m_iText(0) {}
+	virtual ~CFilterBase() {}
 
 	// IFilter
 	IFACEMETHODIMP Init(ULONG grfFlags, ULONG cAttributes, const FULLPROPSPEC *aAttributes, ULONG *pFlags);
@@ -386,21 +374,6 @@ public:
 	{
 		return E_NOTIMPL;
 	}
-
-	// IInitializeWithStream
-	IFACEMETHODIMP Initialize(IStream *pStm, DWORD)
-	{
-		if (m_pStream)
-		{
-			m_pStream->Release();
-		}
-		m_pStream = pStm;
-		m_pStream->AddRef();
-		return OnInit();  // derived class inits now
-	};
-
-protected:
-	IStream*                    m_pStream;         // stream of this document
 
 private:
 	DWORD                       m_dwChunkId;        // Current chunk id
