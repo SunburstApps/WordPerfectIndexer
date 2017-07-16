@@ -12,7 +12,9 @@ using namespace ATL;
 class ATL_NO_VTABLE CWordPerfectFilter :
 	public CComObjectRootEx<CComSingleThreadModel>,
 	public CComCoClass<CWordPerfectFilter, &CLSID_WordPerfectFilter>,
-	public CFilterBase
+	public IInitializeWithStream,
+	public IPropertyStore,
+	public IPropertyStoreCapabilities
 {
 private:
 	class Private;
@@ -25,7 +27,8 @@ public:
 
 	BEGIN_COM_MAP(CWordPerfectFilter)
 		COM_INTERFACE_ENTRY(IInitializeWithStream)
-		COM_INTERFACE_ENTRY(IFilter)
+		COM_INTERFACE_ENTRY(IPropertyStore)
+		COM_INTERFACE_ENTRY(IPropertyStoreCapabilities)
 	END_COM_MAP()
 
 	HRESULT FinalConstruct();
@@ -37,8 +40,18 @@ public:
 		return S_OK;
 	}
 
-	virtual HRESULT OnInit();
-	virtual HRESULT GetNextChunkValue(CChunkValue &chunkValue);
+	// IInitializeWithStream
+	IFACEMETHODIMP Initialize(IStream *stream, DWORD);
+
+	// IPropertyStore
+	IFACEMETHODIMP GetCount(PDWORD);
+	IFACEMETHODIMP GetAt(DWORD, PROPERTYKEY *);
+	IFACEMETHODIMP GetValue(REFPROPERTYKEY, PROPVARIANT *);
+	IFACEMETHODIMP SetValue(REFPROPERTYKEY, REFPROPVARIANT);
+	IFACEMETHODIMP Commit();
+
+	// IPropertyStoreCapabilities
+	IFACEMETHODIMP IsPropertyWritable(REFPROPERTYKEY);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(WordPerfectFilter), CWordPerfectFilter);

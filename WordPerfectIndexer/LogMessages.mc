@@ -56,3 +56,10 @@ SymbolicName=MSG_GETISTREAMLENGTH_FAILURE
 Language=English
 Could not get the length of the IStream (error %1)
 .
+
+MessageId=0x104
+Severity=Error
+SymbolicName=MSG_STREAM_READ_FAILURE
+Language=English
+Could not read from the IStream (error %1)
+.

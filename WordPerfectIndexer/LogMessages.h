@@ -87,3 +87,12 @@
 //
 #define MSG_GETISTREAMLENGTH_FAILURE     ((DWORD)0xC0000103L)
 
+//
+// MessageId: MSG_STREAM_READ_FAILURE
+//
+// MessageText:
+//
+// Could not read from the IStream (error %1)
+//
+#define MSG_STREAM_READ_FAILURE          ((DWORD)0xC0000104L)
+
