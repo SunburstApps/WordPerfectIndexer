@@ -4,10 +4,9 @@
 #include <atlcom.h>
 #include <atlstr.h>
 #include <atlcoll.h>
-#include <propsys.h>
-#include <propkey.h>
 #include <propvarutil.h>
 #include "WordPerfectIndexer_i.h"
+#include "FilterBase.h"
 
 using namespace ATL;
 
