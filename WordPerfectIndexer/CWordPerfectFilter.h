@@ -16,7 +16,7 @@ class ATL_NO_VTABLE CWordPerfectFilter :
 	public IInitializeWithStream,
 	public IPropertyStore,
 	public IPropertyStoreCapabilities,
-	public IFilter
+	public CFilterBase
 {
 private:
 	class Private;
@@ -50,15 +50,8 @@ public:
 	// IPropertyStoreCapabilities
 	IFACEMETHODIMP IsPropertyWritable(REFPROPERTYKEY);
 
-	// IFilter
-	IFACEMETHODIMP Init(ULONG grfFlags, ULONG cAttributes, const FULLPROPSPEC *aAttributes, ULONG *pFlags);
-	IFACEMETHODIMP GetChunk(STAT_CHUNK *pStat);
-	IFACEMETHODIMP GetText(ULONG *pcwcBuffer, WCHAR *awcBuffer);
-	IFACEMETHODIMP GetValue(PROPVARIANT **ppPropValue);
-	IFACEMETHODIMP BindRegion(FILTERREGION, REFIID, void **)
-	{
-		return E_NOTIMPL;
-	}
+	// CFilterBase
+	HRESULT GetNextChunkValue(CChunkValue&);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(WordPerfectFilter), CWordPerfectFilter);

@@ -36,7 +36,6 @@ public:
 	CEventLog EventLog;
 
 	DWORD CurrentChunkId;
-	CChunkValue CurrentChunk;
 	size_t TextChunkIndex;
 };
 
@@ -144,16 +143,7 @@ HRESULT CWordPerfectFilter::IsPropertyWritable(REFPROPERTYKEY)
 	return S_FALSE;
 }
 
-HRESULT CWordPerfectFilter::Init(ULONG, ULONG, const FULLPROPSPEC *, ULONG *)
-{
-	// Common initialization
-	priv->CurrentChunkId = 0;
-	priv->TextChunkIndex = 0;
-	priv->CurrentChunk.Clear();
-	return S_OK;
-}
-
-HRESULT CWordPerfectFilter::GetChunk(STAT_CHUNK *pChunk)
+HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& value)
 {
 	constexpr DWORD ChunkId_Content = 0;
 	constexpr DWORD ChunkId_CharCount = 1;
@@ -161,9 +151,7 @@ HRESULT CWordPerfectFilter::GetChunk(STAT_CHUNK *pChunk)
 
 	HRESULT hr = S_OK;
 	bool isLastChunk = false;
-	ULONG chunkId = 0;
 
-	priv->CurrentChunk.Clear();
 	if (priv->CurrentChunkId == ChunkId_Content)
 	{
 		PROPVARIANT pVar;
@@ -171,10 +159,8 @@ HRESULT CWordPerfectFilter::GetChunk(STAT_CHUNK *pChunk)
 		HRESULT hr = this->GetValue(PKEY_Search_Contents, &pVar);
 		if (FAILED(hr)) return E_UNEXPECTED;
 
-		priv->CurrentChunk.SetTextValue(PKEY_Search_Contents, pVar.pwszVal);
+		value.SetTextValue(PKEY_Search_Contents, pVar.pwszVal);
 		PropVariantClear(&pVar);
-
-		chunkId = priv->CurrentChunkId++;
 	}
 	else if (priv->CurrentChunkId == ChunkId_CharCount)
 	{
@@ -183,100 +169,13 @@ HRESULT CWordPerfectFilter::GetChunk(STAT_CHUNK *pChunk)
 		HRESULT hr = this->GetValue(PKEY_Document_CharacterCount, &pVar);
 		if (FAILED(hr)) return E_UNEXPECTED;
 
-		priv->CurrentChunk.SetIntValue(PKEY_Document_CharacterCount, pVar.intVal);
+		value.SetIntValue(PKEY_Document_CharacterCount, pVar.intVal);
 		PropVariantClear(&pVar);
 
-		chunkId = priv->CurrentChunkId++;
 		isLastChunk = true;
 	}
 
-	priv->CurrentChunk.CopyChunk(pChunk);
-	pChunk->idChunk = chunkId;
-
 	return isLastChunk ? FILTER_E_END_OF_CHUNKS : S_OK;
-}
-
-HRESULT CWordPerfectFilter::GetText(ULONG *pcwcBuffer, WCHAR *awcBuffer)
-{
-	HRESULT hr = S_OK;
-
-	if ((pcwcBuffer == NULL) || (*pcwcBuffer == 0))
-	{
-		return E_INVALIDARG;
-	}
-
-	if (!priv->CurrentChunk.IsValid())
-	{
-		return FILTER_E_NO_MORE_TEXT;
-	}
-
-	if (priv->CurrentChunk.GetChunkType() != CHUNK_TEXT)
-	{
-		return FILTER_E_NO_TEXT;
-	}
-
-	ULONG cchTotal = static_cast<ULONG>(wcslen(priv->CurrentChunk.GetString()));
-	ULONG cchLeft = cchTotal - priv->TextChunkIndex;
-	ULONG cchToCopy = min(*pcwcBuffer - 1, cchLeft);
-
-	if (cchToCopy > 0)
-	{
-		PCWSTR psz = priv->CurrentChunk.GetString() + priv->TextChunkIndex;
-
-		// copy the chars
-		StringCchCopyN(awcBuffer, *pcwcBuffer, psz, cchToCopy);
-
-		// null terminate it
-		awcBuffer[cchToCopy] = '\0';
-
-		// set how much data is copied
-		*pcwcBuffer = cchToCopy;
-
-		// remember we copied it
-		priv->TextChunkIndex += cchToCopy;
-		cchLeft -= cchToCopy;
-
-		if (cchLeft == 0)
-		{
-			hr = FILTER_S_LAST_TEXT;
-		}
-	}
-	else
-	{
-		hr = FILTER_E_NO_MORE_TEXT;
-	}
-
-	return hr;
-}
-
-HRESULT CWordPerfectFilter::GetValue(PROPVARIANT **ppPropValue)
-{
-	HRESULT hr = S_OK;
-
-	// if this is not a value chunk they shouldn't be calling this
-	if (priv->CurrentChunk.GetChunkType() != CHUNK_VALUE)
-	{
-		return FILTER_E_NO_MORE_VALUES;
-	}
-
-	if (ppPropValue == NULL)
-	{
-		return E_INVALIDARG;
-	}
-
-	if (priv->CurrentChunk.IsValid())
-	{
-		// return the value of this chunk as a PROPVARIANT ( they own freeing it properly )
-		hr = priv->CurrentChunk.GetValue(ppPropValue);
-		priv->CurrentChunk.Clear();
-	}
-	else
-	{
-		// we have already return the value for this chunk, go away
-		hr = FILTER_E_NO_MORE_VALUES;
-	}
-
-	return hr;
 }
 
 HRESULT CWordPerfectFilter::FinalConstruct()
