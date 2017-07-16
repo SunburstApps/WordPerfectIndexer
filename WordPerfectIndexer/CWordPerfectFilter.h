@@ -4,6 +4,7 @@
 #include <atlcom.h>
 #include <atlstr.h>
 #include <atlcoll.h>
+#include <propvarutil.h>
 #include "WordPerfectIndexer_i.h"
 #include "FilterBase.h"
 

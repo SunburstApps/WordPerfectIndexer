@@ -91,14 +91,14 @@ HRESULT CWordPerfectFilter::Initialize(IStream *raw_stream, DWORD)
 	PROPVARIANT prop_var;
 
 	PropVariantInit(&prop_var);
-	prop_var.vt = VT_LPWSTR;
-	prop_var.pwszVal = const_cast<LPWSTR>(bodyText.GetString());
-	priv->Cache->SetValueAndState(PKEY_Search_Contents, &prop_var, PSC_NORMAL);
+	InitPropVariantFromString(bodyText.GetString(), &prop_var);
+	priv->Cache->SetValue(PKEY_Search_Contents, prop_var);
+	PropVariantClear(&prop_var);
 
 	PropVariantInit(&prop_var);
-	prop_var.vt = VT_I4;
-	prop_var.intVal = bodyText.GetLength();
-	priv->Cache->SetValueAndState(PKEY_Document_CharacterCount, &prop_var, PSC_NORMAL);
+	InitPropVariantFromInt32(bodyText.GetLength(), &prop_var);
+	priv->Cache->SetValue(PKEY_Document_CharacterCount, prop_var);
+	PropVariantClear(&prop_var);
 
 	return S_OK;
 }
