@@ -107,28 +107,19 @@ HRESULT CWordPerfectFilter::Initialize(IStream *raw_stream, DWORD)
 
 HRESULT CWordPerfectFilter::GetCount(PDWORD pCount)
 {
-	if (pCount == nullptr) return E_INVALIDARG;
-
 	*pCount = 0;
-	if (priv == nullptr || !priv->Cache) return E_UNEXPECTED;
 	return priv->Cache->GetCount(pCount);
 }
 
 HRESULT CWordPerfectFilter::GetAt(DWORD index, PROPERTYKEY *pkey)
 {
-	if (pkey == nullptr) return E_INVALIDARG;
-
 	*pkey = PKEY_Null;
-	if (priv == nullptr || !priv->Cache) return E_UNEXPECTED;
 	return priv->Cache->GetAt(index, pkey);
 }
 
 HRESULT CWordPerfectFilter::GetValue(REFPROPERTYKEY key, PROPVARIANT *pvar)
 {
-	if (pvar == nullptr) return E_INVALIDARG;
-
 	PropVariantInit(pvar);
-	if (priv == nullptr || !priv->Cache) return E_UNEXPECTED;
 	return priv->Cache->GetValue(key, pvar);
 }
 
