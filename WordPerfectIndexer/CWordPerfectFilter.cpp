@@ -103,6 +103,8 @@ HRESULT CWordPerfectFilter::Initialize(IStream *raw_stream, DWORD)
 	priv->Cache->SetValue(PKEY_Document_CharacterCount, prop_var);
 	PropVariantClear(&prop_var);
 
+	priv->CurrentChunkId = 0;
+
 	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_END_IMPORT);
 
 	return S_OK;
@@ -147,11 +149,8 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& value)
 {
 	constexpr DWORD ChunkId_Content = 0;
 	constexpr DWORD ChunkId_CharCount = 1;
-	constexpr DWORD LastChunkId = ChunkId_CharCount;
 
 	HRESULT hr = S_OK;
-	bool isLastChunk = false;
-
 	if (priv->CurrentChunkId == ChunkId_Content)
 	{
 		PROPVARIANT pVar;
@@ -159,8 +158,11 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& value)
 		HRESULT hr = this->GetValue(PKEY_Search_Contents, &pVar);
 		if (FAILED(hr)) return E_UNEXPECTED;
 
-		value.SetTextValue(PKEY_Search_Contents, pVar.pwszVal);
+		hr = value.SetTextValue(PKEY_Search_Contents, pVar.pwszVal);
 		PropVariantClear(&pVar);
+
+		priv->CurrentChunkId++;
+		return hr;
 	}
 	else if (priv->CurrentChunkId == ChunkId_CharCount)
 	{
@@ -169,13 +171,16 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& value)
 		HRESULT hr = this->GetValue(PKEY_Document_CharacterCount, &pVar);
 		if (FAILED(hr)) return E_UNEXPECTED;
 
-		value.SetIntValue(PKEY_Document_CharacterCount, pVar.intVal);
+		hr = value.SetIntValue(PKEY_Document_CharacterCount, pVar.intVal);
 		PropVariantClear(&pVar);
 
-		isLastChunk = true;
+		priv->CurrentChunkId++;
+		return hr;
 	}
-
-	return isLastChunk ? FILTER_E_END_OF_CHUNKS : S_OK;
+	else
+	{
+		return FILTER_E_END_OF_CHUNKS;
+	}
 }
 
 HRESULT CWordPerfectFilter::FinalConstruct()
