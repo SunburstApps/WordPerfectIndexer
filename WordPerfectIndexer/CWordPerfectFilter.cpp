@@ -100,6 +100,8 @@ HRESULT CWordPerfectFilter::Initialize(IStream *raw_stream, DWORD)
 	priv->Cache->SetValue(PKEY_Document_CharacterCount, prop_var);
 	PropVariantClear(&prop_var);
 
+	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_END_IMPORT);
+
 	return S_OK;
 }
 
