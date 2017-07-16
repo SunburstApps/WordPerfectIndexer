@@ -259,7 +259,6 @@
     <ClInclude Include="CEventLog.h" />
     <ClInclude Include="CWordPerfectFilter.h" />
     <ClInclude Include="dllmain.h" />
-    <ClInclude Include="FilterBase.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
