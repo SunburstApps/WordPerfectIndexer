@@ -36,12 +36,6 @@ public:
 	HRESULT FinalConstruct();
 	void FinalRelease();
 
-	IFACEMETHODIMP GetClassID(CLSID* pClassID)
-	{
-		*pClassID = CLSID_WordPerfectFilter;
-		return S_OK;
-	}
-
 	// IInitializeWithStream
 	IFACEMETHODIMP Initialize(IStream *stream, DWORD);
 
