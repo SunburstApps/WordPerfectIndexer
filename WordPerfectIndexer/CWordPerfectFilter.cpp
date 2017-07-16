@@ -151,12 +151,14 @@ HRESULT CWordPerfectFilter::IsPropertyWritable(REFPROPERTYKEY)
 
 HRESULT CWordPerfectFilter::FinalConstruct()
 {
-	if (priv == nullptr) priv = new (std::nothrow) CWordPerfectFilter::Private;
+	priv = new (std::nothrow) CWordPerfectFilter::Private;
 	if (priv == nullptr) return E_OUTOFMEMORY;
 
-	HRESULT hr = PSCreateMemoryPropertyStore(IID_PPV_ARGS(&priv->Cache));
+	IPropertyStoreCache *cache;
+	HRESULT hr = PSCreateMemoryPropertyStore(IID_IPropertyStoreCache, (void **) &cache);
 	if (FAILED(hr)) return E_FAIL;
 
+	priv->Cache.Attach(cache);
 	return S_OK;
 }
 
