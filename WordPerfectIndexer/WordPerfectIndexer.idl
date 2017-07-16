@@ -22,6 +22,7 @@ library WordPerfectIndexerLib
 		[default] interface IPropertyStore;
 		interface IPropertyStoreCapabilities;
 		interface IInitializeWithStream;
+		interface IFilter;
 	};
 };
 
