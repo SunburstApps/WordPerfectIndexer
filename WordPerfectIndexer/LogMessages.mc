@@ -63,3 +63,10 @@ SymbolicName=MSG_STREAM_READ_FAILURE
 Language=English
 Could not read from the IStream (error %1)
 .
+
+MessageId=0x105
+Severity=Informational
+SymbolicName=MSG_TRACE_FILTER
+Language=English
+Getting property chunk #%1 from IFilter
+.

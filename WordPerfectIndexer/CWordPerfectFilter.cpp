@@ -150,6 +150,10 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& value)
 	constexpr DWORD ChunkId_Content = 0;
 	constexpr DWORD ChunkId_CharCount = 1;
 
+	CString num; num.Format(L"%d", priv->CurrentChunkId);
+	LPCWSTR numStr = num.GetString();
+	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_TRACE_FILTER, &numStr, 1);
+
 	HRESULT hr = S_OK;
 	if (priv->CurrentChunkId == ChunkId_Content)
 	{

@@ -96,3 +96,12 @@
 //
 #define MSG_STREAM_READ_FAILURE          ((DWORD)0xC0000104L)
 
+//
+// MessageId: MSG_TRACE_FILTER
+//
+// MessageText:
+//
+// Getting property chunk #%1 from IFilter
+//
+#define MSG_TRACE_FILTER                 ((DWORD)0x40000105L)
+
