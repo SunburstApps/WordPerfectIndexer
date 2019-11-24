@@ -39,12 +39,12 @@ public:
 	DWORD CurrentChunkId;
 };
 
-HRESULT CWordPerfectFilter::Initialize(IStream *raw_stream, DWORD)
+HRESULT CWordPerfectFilter::OnInit(void)
 {
 	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_BEGIN_IMPORT);
 
 	HRESULT hr = S_OK;
-	CComPtr<IStream> stream(raw_stream);
+	CComPtr<IStream> stream(m_pStream);
 
 	librevenge::RVNGString rvngBodyText;
 	if (priv->Generator != nullptr) delete priv->Generator;
