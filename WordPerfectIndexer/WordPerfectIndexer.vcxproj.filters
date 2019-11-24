@@ -60,6 +60,9 @@
     <ClInclude Include="CEventLog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LogMessages.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WordPerfectIndexer.rc">
