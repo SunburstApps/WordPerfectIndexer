@@ -54,4 +54,4 @@ public:
 	HRESULT GetNextChunkValue(CChunkValue&);
 };
 
-OBJECT_ENTRY_AUTO(__uuidof(WordPerfectFilter), CWordPerfectFilter);
+OBJECT_ENTRY_AUTO(CLSID_WordPerfectFilter, CWordPerfectFilter);
