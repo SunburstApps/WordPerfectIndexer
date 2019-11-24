@@ -286,7 +286,6 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compiling log message definitions</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)LogMessages.res</Outputs>
     </CustomBuild>
-    <None Include="WordPerfectIndexer.rgs" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="WordPerfectIndexer.idl" />

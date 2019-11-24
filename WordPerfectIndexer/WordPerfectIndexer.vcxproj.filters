@@ -70,9 +70,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="WordPerfectIndexer.rgs">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="WordPerfectIndexer.def">
       <Filter>Source Files</Filter>
     </None>
