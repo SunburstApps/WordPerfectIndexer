@@ -149,7 +149,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BOOST_ERROR_CODE_HEADER_ONLY;DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)inc</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
@@ -163,7 +163,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BOOST_ERROR_CODE_HEADER_ONLY;DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)inc</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
@@ -179,7 +179,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BOOST_ERROR_CODE_HEADER_ONLY;DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)inc</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
@@ -197,7 +197,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BOOST_ERROR_CODE_HEADER_ONLY;DLL_EXPORT;LIBREVENGE_BUILD;LIBREVENGE_GENERATORS_BUILD;LIBREVENGE_STREAM_BUILD;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)inc</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
