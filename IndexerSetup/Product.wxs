@@ -87,8 +87,8 @@
 
   <Fragment>
     <Component Id="DocumentationComponent" Guid="{452E481C-9EC3-47CF-A023-B54A787B2050}" Directory="INSTALLFOLDER" Win64="no">
-      <File Id="LICENSE" Name="LICENSE.txt" Source="$(var.SolutionDir)\LICENSE.txt" />
-      <File Id="README" Name="README.txt" Source="$(var.SolutionDir)\IndexerSetup\README_DIST.txt" />
+      <File Id="LICENSE" Name="LICENSE.txt" Source="$(var.ProjectDir)..\LICENSE.txt" />
+      <File Id="README" Name="README.txt" Source="$(var.ProjectDir)\README_DIST.txt" />
     </Component>
   </Fragment>
 </Wix>
