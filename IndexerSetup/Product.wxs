@@ -16,13 +16,13 @@
     <Property Id="ARPNOREPAIR" Value="1" />
 
     <?if $(var.Debug) ?>
-      <WixVariable Id="bin32" Value="$(var.ProjectDir)..\Debug" />
-      <WixVariable Id="bin64" Value="$(var.ProjectDir)..\x64\Debug" />
-      <WixVariable Id="zlib_filename" Value="zlibd1.dll" />
+      <?define bin32=$(var.ProjectDir)..\Debug ?>
+      <?define bin64=$(var.ProjectDir)..\x64\Debug ?>
+      <?define zlib_filename=zlibd1.dll ?>
     <?else ?>
-      <WixVariable Id="bin32" Value="$(var.ProjectDir)..\Release" />
-      <WixVariable Id="bin64" Value="$(var.ProjectDir)..\x64\Release" />
-      <WixVariable Id="zlib_filename" Value="zlib1.dll" />
+      <?define bin32=$(var.ProjectDir)..\Relese ?>
+      <?define bin64=$(var.ProjectDir)..\x64\Release ?>
+      <?define zlib_filename=zlib1.dll ?>
     <?endif ?>
   </Product>
 
@@ -35,11 +35,11 @@
 
     <DirectoryRef Id="INSTALLFOLDER">
       <Component Id="ProductComponent" Guid="{3DF2827D-0BAF-456A-8320-00F3AE5B9969}" Win64="no">
-        <File Id="librevenge.dll" Name="librevenge.dll" Source="!(wix.bin32)\librevenge.dll" />
-        <File Id="libwpd.dll" Name="libwpd.dll" Source="!(wix.bin32)\libwpd.dll" />
-        <File Id="wpd2text.exe" Name="wpd2text.exe" Source="!(wix.bin32)\wpd2text.exe" />
-        <File Id="zlib.dll" Name="!(wix.zlib_filename)" Source="!(wix.bin32)\!(wix.zlib_filename)" />
-        <File Id="WordPerfectIndexer.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="!(wix.bin32)\WordPerfectIndexer.dll">
+        <File Id="librevenge.dll" Name="librevenge.dll" Source="$(var.bin32)\librevenge.dll" />
+        <File Id="libwpd.dll" Name="libwpd.dll" Source="$(var.bin32)\libwpd.dll" />
+        <File Id="wpd2text.exe" Name="wpd2text.exe" Source="$(var.bin32)\wpd2text.exe" />
+        <File Id="zlib.dll" Name="$(var.zlib_filename)" Source="$(var.bin32)\$(var.zlib_filename)" />
+        <File Id="WordPerfectIndexer.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="$(var.bin32)\WordPerfectIndexer.dll">
           <TypeLib Id="{FAABE005-73E7-4015-895D-B9B1E30BF26A}" Description="WordPerfect Indexer Type Library" Language="0" MajorVersion="1" MinorVersion="0">
             <Class Id="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Context="InprocServer32" Description="WordPerfect Filter" ThreadingModel="both" Version="1.0" />
           </TypeLib>
@@ -70,12 +70,12 @@
     </DirectoryRef>
 
     <Component Id="ProductComponent64" Guid="{53B6D32C-2A5D-4AEE-AF9D-AA3FBE5CD6FE}" Directory="INSTALLFOLDER64">
-      <File Id="librevenge64.dll" Name="librevenge.dll" Source="!(wix.bin64)\librevenge.dll" />
-      <File Id="libwpd64.dll" Name="libwpd.dll" Source="!(wix.bin64)\libwpd.dll" />
-      <File Id="wpd2text64.exe" Name="wpd2text.exe" Source="!(wix.bin64)\wpd2text.exe" />
-      <File Id="zlib64.dll" Name="!(wix.zlib_filename)" Source="!(wix.bin64)\!(wix.zlib_filename)" />
+      <File Id="librevenge64.dll" Name="librevenge.dll" Source="$(var.bin64)\librevenge.dll" />
+      <File Id="libwpd64.dll" Name="libwpd.dll" Source="$(var.bin64)\libwpd.dll" />
+      <File Id="wpd2text64.exe" Name="wpd2text.exe" Source="$(var.bin64)\wpd2text.exe" />
+      <File Id="zlib64.dll" Name="$(var.zlib_filename)" Source="$(var.bin64)\$(var.zlib_filename)" />
 
-      <File Id="WordPerfectIndexer64.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="!(wix.bin64)\WordPerfectIndexer.dll">
+      <File Id="WordPerfectIndexer64.dll" Name="WordPerfectIndexer.dll" KeyPath="yes" Source="$(var.bin64)\WordPerfectIndexer.dll">
         <TypeLib Id="{FAABE005-73E7-4015-895D-B9B1E30BF26A}" Description="WordPerfect Indexer Type Library" Language="0" MajorVersion="1" MinorVersion="0">
           <Class Id="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Context="InprocServer32" Description="WordPerfect Filter" ThreadingModel="both" Version="1.0" />
         </TypeLib>
