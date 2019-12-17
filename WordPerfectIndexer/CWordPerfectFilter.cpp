@@ -58,8 +58,8 @@ HRESULT CWordPerfectFilter::OnInit(void)
 		hr = stream->Stat(&stg, STATFLAG_NONAME);
 		if (FAILED(hr)) {
 			CString str; str.Format(L"0x%08llX", hr);
-			LPCWSTR raw_str = str.GetString();
-			priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_GETISTREAMLENGTH_FAILURE, &raw_str, 1);
+			LPCWSTR args[] = { str.GetString() };
+			priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_GETISTREAMLENGTH_FAILURE, args);
 			return E_UNEXPECTED;
 		}
 
@@ -71,8 +71,8 @@ HRESULT CWordPerfectFilter::OnInit(void)
 		hr = stream->Read(Buffer.get(), StreamLength, nullptr);
 		if (FAILED(hr)) {
 			CString str; str.Format(L"0x%08llX", hr);
-			LPCWSTR raw_str = str.GetString();
-			priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_STREAM_READ_FAILURE, &raw_str, 1);
+			LPCWSTR args[] = { str.GetString() };
+			priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_STREAM_READ_FAILURE, args);
 			return hr;
 		}
 	} while (0);
@@ -151,8 +151,8 @@ HRESULT CWordPerfectFilter::GetNextChunkValue(CChunkValue& value)
 	constexpr DWORD ChunkId_CharCount = 1;
 
 	CString num; num.Format(L"%d", priv->CurrentChunkId);
-	LPCWSTR numStr = num.GetString();
-	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_TRACE_FILTER, &numStr, 1);
+	LPCWSTR args[] = { num.GetString() };
+	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_TRACE_FILTER, args);
 
 	HRESULT hr = S_OK;
 	if (priv->CurrentChunkId == ChunkId_Content)
