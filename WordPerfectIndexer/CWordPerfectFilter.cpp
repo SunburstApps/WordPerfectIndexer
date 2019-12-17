@@ -83,7 +83,7 @@ HRESULT CWordPerfectFilter::OnInit(void)
 		}
 	} while (0);
 
-	librevenge::RVNGStringStream rvngStream(Buffer.get(), (unsigned int)StreamLength * sizeof(unsigned char));
+	librevenge::RVNGStringStream rvngStream(Buffer.get(), (unsigned int)StreamLength * sizeof(uint8_t));
 	libwpd::WPDResult wpdError = libwpd::WPDocument::parse(&rvngStream, priv->Generator, nullptr);
 
 	if (wpdError != libwpd::WPD_OK)
