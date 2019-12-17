@@ -13,13 +13,21 @@
 
 namespace /* anonymous */
 {
-	template<class T>
-	class MallocDeleter
+	class malloc_ptr_deleter
 	{
 	public:
-		void operator () (T* ptr) {
+		void operator () (uint8_t* ptr) {
 			free((void *) ptr);
 		}
+	};
+
+	class malloc_ptr : public std::unique_ptr<uint8_t, malloc_ptr_deleter>
+	{
+	private:
+		typedef std::unique_ptr<uint8_t, malloc_ptr_deleter> superclass;
+
+	public:
+		malloc_ptr(size_t byteCount) : superclass((uint8_t *)calloc(byteCount, sizeof(uint8_t))) {}
 	};
 }
 
@@ -66,7 +74,7 @@ HRESULT CWordPerfectFilter::OnInit(void)
 		StreamLength = (size_t)stg.cbSize.QuadPart;
 	} while (0);
 
-	std::unique_ptr<unsigned char, MallocDeleter<unsigned char>> Buffer((unsigned char *)calloc(StreamLength, sizeof(unsigned char)));
+	malloc_ptr Buffer(StreamLength);
 	do {
 		hr = stream->Read(Buffer.get(), (ULONG)StreamLength, nullptr);
 		if (FAILED(hr)) {
