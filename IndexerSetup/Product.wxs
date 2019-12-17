@@ -20,7 +20,7 @@
       <?define bin64=$(var.ProjectDir)..\x64\Debug ?>
       <?define zlib_filename=zlibd1.dll ?>
     <?else ?>
-      <?define bin32=$(var.ProjectDir)..\Relese ?>
+      <?define bin32=$(var.ProjectDir)..\Release ?>
       <?define bin64=$(var.ProjectDir)..\x64\Release ?>
       <?define zlib_filename=zlib1.dll ?>
     <?endif ?>
