@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:swid="http://schemas.microsoft.com/wix/TagExtension">
+  <Product Id="*" Name="WordPerfect Indexer (64-bit)" Language="1033" Version="1.1.0.0" Manufacturer="Sunburst Solutions" UpgradeCode="97f76fe2-26e9-4aa3-a6d0-24b56387b1ea">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="WordPerfect Indexer (64-bit)" Level="1" AllowAdvertise="no" Absent="disallow" TypicalDefault="install">
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="DocumentationComponents" />
+    </Feature>
+
+    <Property Id="ARPNOMODIFY" Value="1" />
+
+    <?ifdef $(var.Debug) ?>
+      <?define bin=$(var.ProjectDir)..\x64\Debug ?>
+      <?define zlib_filename=zlibd1.dll ?>
+    <?else ?>
+      <?define bin=$(var.ProjectDir)..\x64\Release ?>
+      <?define zlib_filename=zlib1.dll ?>
+    <?endif ?>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLFOLDER" Name="WordPerfect Indexer" />
+      </Directory>
+    </Directory>
+
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component>
+        <File Name="librevenge.dll" Source="$(var.bin)\librevenge.dll" KeyPath="yes" Checksum="yes" />
+      </Component>
+      <Component>
+        <File Name="libwpd.dll" Source="$(var.bin)\libwpd.dll" KeyPath="yes" Checksum="yes" />
+      </Component>
+      <Component>
+        <File Name="wpd2text.exe" Source="$(var.bin)\wpd2text.exe" KeyPath="yes" Checksum="yes" />
+      </Component>
+      <Component>
+        <File Name="$(var.zlib_filename)" Source="$(var.bin)\$(var.zlib_filename)" KeyPath="yes" Checksum="yes" />
+      </Component>
+
+      <Component>
+        <File Id="WordPerfectIndexer.dll" Name="WordPerfectIndexer.dll" Source="$(var.bin)\WordPerfectIndexer.dll" KeyPath="yes" Checksum="yes">
+          <TypeLib Id="{FAABE005-73E7-4015-895D-B9B1E30BF26A}" Description="WordPerfect Indexer Type Library" Language="0" MajorVersion="1" MinorVersion="0">
+            <Class Id="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Context="InprocServer32" Description="WordPerfect IFilter" ThreadingModel="both" Version="1.0" />
+          </TypeLib>
+        </File>
+
+        <RegistryValue Root="HKCR" Key=".wpd\PersistentHandler" Value="{D1A975AB-725A-4804-ADC1-4BC3DB60621C}" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D1A975AB-725A-4804-ADC1-4BC3DB60621C}\PersistentAddinsRegistered\{89BCB740-6119-101A-BCB7-00DD010655AF}" Value="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D1A975AB-725A-4804-ADC1-4BC3DB60621C}\PersistentAddinsRegistered" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers\.wpd" Value="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Type="string" Action="write" />
+
+        <RegistryValue Root="HKCR" Key="SystemFileAssociations\.wpd" Name="PerceivedType" Value="document" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="SystemFileAssociations\.wpd\ShellEx\PropertyHandler" Value="{F4EF307D-BCFC-4DC5-821D-31B77E0A5011}" Type="string" Action="write" />
+
+        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfect Indexer" Name="CategoryCount" Value="1" Type="integer" Action="write" />
+        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfect Indexer" Name="CategoryMessageFile" Value="[#WordPerfectIndexer.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfect Indexer" Name="EventMessageFile" Value="[#WordPerfectIndexer.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfect Indexer" Name="ParameterMessageFile" Value="[#WordPerfectIndexer.dll]" Type="string" Action="write" />
+        <RegistryValue Root="HKLM" Key="SYSTEM\CurrentControlSet\services\eventlog\Application\WordPerfect Indexer" Name="TypesSupported" Value="7" Type="integer" Action="write" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="DocumentationComponents" Directory="INSTALLFOLDER">
+      <Component>
+        <File Name="LICENSE.txt" Source="$(var.ProjectDir)..\LICENSE.txt" KeyPath="yes" />
+      </Component>
+      <Component>
+        <File Name="README.txt" Source="$(var.ProjectDir)..\IndexerSetup\README_DIST.txt" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
