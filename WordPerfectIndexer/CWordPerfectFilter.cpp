@@ -50,9 +50,7 @@ public:
 HRESULT CWordPerfectFilter::OnInit(void)
 {
 	priv->EventLog.ReportEvent(EVENTLOG_INFORMATION_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_BEGIN_IMPORT);
-
 	HRESULT hr = S_OK;
-	CComPtr<IStream> stream(m_pStream);
 
 	librevenge::RVNGString rvngBodyText;
 	if (priv->Generator != nullptr) delete priv->Generator;
@@ -63,7 +61,7 @@ HRESULT CWordPerfectFilter::OnInit(void)
 	do {
 		STATSTG stg;
 		ZeroMemory(&stg, sizeof(stg));
-		hr = stream->Stat(&stg, STATFLAG_NONAME);
+		hr = m_pStream->Stat(&stg, STATFLAG_NONAME);
 		if (FAILED(hr)) {
 			CString str; str.Format(L"0x%08llX", (long long)hr);
 			LPCWSTR args[] = { str.GetString() };
@@ -76,7 +74,7 @@ HRESULT CWordPerfectFilter::OnInit(void)
 
 	malloc_ptr Buffer(StreamLength);
 	do {
-		hr = stream->Read(Buffer.get(), (ULONG)StreamLength, nullptr);
+		hr = m_pStream->Read(Buffer.get(), (ULONG)StreamLength, nullptr);
 		if (FAILED(hr)) {
 			CString str; str.Format(L"0x%08llX", (long long)hr);
 			LPCWSTR args[] = { str.GetString() };
