@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
-  <Bundle Name="WordPerfect Indexer" Version="1.0.0.0" Manufacturer="Sunburst Solutions" UpgradeCode="2e3e3801-9593-4452-a4e4-412226056b3c">
+  <Bundle Name="WordPerfect Indexer" Version="1.0.0.0" Manufacturer="Sunburst Solutions" UpgradeCode="2e3e3801-9593-4452-a4e4-412226056b3c" IconSourceFile="Setup.ico">
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
       <bal:WixStandardBootstrapperApplication LicenseFile="LICENSE.rtf" />
     </BootstrapperApplicationRef>
