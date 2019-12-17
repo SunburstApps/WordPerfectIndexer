@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>WordPerfectIndexer</OutputName>
     <OutputType>Package</OutputType>
-    <InstallerPlatform>x64</InstallerPlatform>
+    <InstallerPlatform>x86</InstallerPlatform>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
