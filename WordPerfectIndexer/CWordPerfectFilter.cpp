@@ -57,7 +57,7 @@ HRESULT CWordPerfectFilter::OnInit(void)
 		ZeroMemory(&stg, sizeof(stg));
 		hr = stream->Stat(&stg, STATFLAG_NONAME);
 		if (FAILED(hr)) {
-			CString str; str.Format(L"0x%08llX", hr);
+			CString str; str.Format(L"0x%08llX", (long long)hr);
 			LPCWSTR args[] = { str.GetString() };
 			priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_GETISTREAMLENGTH_FAILURE, args);
 			return E_UNEXPECTED;
@@ -68,16 +68,16 @@ HRESULT CWordPerfectFilter::OnInit(void)
 
 	std::unique_ptr<unsigned char, MallocDeleter<unsigned char>> Buffer((unsigned char *)calloc(StreamLength, sizeof(unsigned char)));
 	do {
-		hr = stream->Read(Buffer.get(), StreamLength, nullptr);
+		hr = stream->Read(Buffer.get(), (ULONG)StreamLength, nullptr);
 		if (FAILED(hr)) {
-			CString str; str.Format(L"0x%08llX", hr);
+			CString str; str.Format(L"0x%08llX", (long long)hr);
 			LPCWSTR args[] = { str.GetString() };
 			priv->EventLog.ReportEvent(EVENTLOG_ERROR_TYPE, TEXT_EXTRACTION_CATEGORY, MSG_STREAM_READ_FAILURE, args);
 			return hr;
 		}
 	} while (0);
 
-	librevenge::RVNGStringStream rvngStream(Buffer.get(), StreamLength * sizeof(unsigned char));
+	librevenge::RVNGStringStream rvngStream(Buffer.get(), (unsigned int)StreamLength * sizeof(unsigned char));
 	libwpd::WPDResult wpdError = libwpd::WPDocument::parse(&rvngStream, priv->Generator, nullptr);
 
 	if (wpdError != libwpd::WPD_OK)
