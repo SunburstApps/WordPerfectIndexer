@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Bundle Name="WordPerfect Indexer" Version="1.0.0.0" Manufacturer="Sunburst Solutions" UpgradeCode="2e3e3801-9593-4452-a4e4-412226056b3c" IconSourceFile="Setup.ico">
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
       <bal:WixStandardBootstrapperApplication LicenseFile="LICENSE.rtf" />
     </BootstrapperApplicationRef>
 
+    <Variable Name="InstallFolder" Value="[ProgramFiles6432Folder]WordPerfect Indexer" bal:Overridable="yes" />
+    <util:DirectorySearch Variable="InstallFolder" Path="[ProgramFiles6432Folder]WordPerfect Indexer" />
+
     <Chain ParallelCache="yes">
       <!-- Download this file from: https://download.visualstudio.microsoft.com/download/pr/9307e627-aaac-42cb-a32a-a39e166ee8cb/E59AE3E886BD4571A811FE31A47959AE5C40D87C583F786816C60440252CD7EC/VC_redist.x86.exe -->
       <ExePackage Description="Microsoft Visual C++ Runtime (32-bit)" Permanent="yes" SourceFile="bin\redists\VC_Redist.x86.exe"
-                  InstallCommand="/install /quiet" RepairCommand="/repair /quiet">
+                  InstallCondition="NOT VersionNT64" InstallCommand="/install /quiet" RepairCommand="/repair /quiet">
         <ExitCode Value="3010" Behavior="scheduleReboot" />
         <ExitCode Value="5100" Behavior="success" />
       </ExePackage>
@@ -20,8 +24,15 @@
         <ExitCode Value="5100" Behavior="success" />
       </ExePackage>
 
-      <MsiPackage Id="Indexer32" DisplayName="WordPerfect Indexer (32-bit)" Vital="yes" SourceFile="$(var.IndexerSetup.TargetPath)" />
-      <MsiPackage Id="Indexer64" DisplayName="WordPerfect Indexer (64-bit)" Vital="yes" SourceFile="$(var.IndexerSetup64.TargetPath)" InstallCondition="VersionNT64" />
+      <MsiPackage Id="Indexer32" DisplayName="WordPerfect Indexer (32-bit)" Vital="yes" SourceFile="$(var.IndexerSetup.TargetPath)"
+                  InstallCondition="NOT VersionNT64">
+        <MsiProperty Name="INSTALLFOLDER" Value="[InstallFolder]" />
+      </MsiPackage>
+
+      <MsiPackage Id="Indexer64" DisplayName="WordPerfect Indexer (64-bit)" Vital="yes" SourceFile="$(var.IndexerSetup64.TargetPath)"
+                  InstallCondition="VersionNT64">
+        <MsiProperty Name="INSTALLFOLDER" Value="[InstallFolder]" />
+      </MsiPackage>
     </Chain>
   </Bundle>
 </Wix>
